@@ -1,0 +1,26 @@
+{
+  "Authentication":{
+    "title_Register": "التسجيل",
+    "title_Login": "مرحبًا بعودتك!",
+    "user_name": "الاسم",
+    "account_email": "الايميل",
+    "password": "كلمه السر",
+    "confirm_password": "تأكيد كلمة السر",
+    "forgot_password": "نسيت كلمة السر؟",
+    "bottom_register": "التسجيل",
+    "bottom_login": "تسجيل الدخول",
+    "dont_have_account": "ليس لديك حساب ؟",
+    "create_account": "إنشاء حساب",
+    "Login_bottom": "التسجيل",
+    "or_continue_with": "أو تابع مع",
+    "already_have_account": "هل لديك حساب بالفعل؟",
+    "enterEmail": "يرجى إدخال بريدك الإلكتروني",
+    "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
+    "enterPassword": "يرجى إدخال كلمة السر",
+    "invalidPassword": "يجب أن تحتوي كلمة السر على 8 أحرف على الأقل "
+
+  },
+  "homepage": {
+    "home_page": "الصفحة الرئيسية"
+  }
+}

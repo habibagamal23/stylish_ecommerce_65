@@ -1,0 +1,28 @@
+{
+  "Authentication": {
+    "title_Register": "Create an account",
+    "title_Login": "Welcome Back!",
+    "user_name": "Name",
+    "account_email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "forgot_password": "Forgot Password?",
+    "bottom_register": "Create Account",
+    "bottom_login": "Login",
+    "dont_have_account": "Dont have an account?",
+    "create_account": "Create an account",
+    "Login_bottom": "Login",
+    "or_continue_with": "OR Continue with",
+    "already_have_account": "Already have an Account",
+
+    "enterEmail": "Please enter your email",
+    "invalidEmail": "Please enter a valid email",
+    "enterPassword": "Please enter your password",
+    "invalidPassword": "Password must contain at least 8 characters, and a special character"
+
+  },
+
+  "homepage": {
+    "home_page": "Home Page"
+  }
+}
