@@ -10,7 +10,6 @@ import 'package:shtylishecommerce/main.dart';
 import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
 
-
 import '../../../core/spacing.dart';
 import '../../../generated/locale_keys.g.dart';
 
@@ -19,7 +18,7 @@ class Loginscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final   cubit =context.read<LocalizatioCubit>();
+    final cubit = context.read<LocalizatioCubit>();
     return Scaffold(
         body: SafeArea(
             child: Padding(
@@ -36,10 +35,10 @@ class Loginscreen extends StatelessWidget {
                 onPressed: () {
                   // final newlang = context.locale.languageCode=='en'?'ar':'en';
                   // cubit.chageLang(newlang);
-                  cubit.changeLanguage();
-                  final newLocale = context.locale.languageCode == 'en' ? Locale('ar') : Locale('en');
-                  context.setLocale(newLocale);
 
+                  cubit.changeLanguage();
+                  final newLocale = cubit.newLocale;
+                  context.setLocale(newLocale);
                 },
               ),
             ),
@@ -53,8 +52,7 @@ class Loginscreen extends StatelessWidget {
             vertical(30),
             Usernameandpassword(),
             vertical(50),
-            BlocConsumer<LoginCubit, LoginState>(
-                builder: (context, state) {
+            BlocConsumer<LoginCubit, LoginState>(builder: (context, state) {
               if (state is LoginLoading) {
                 return Center(
                   child: CircularProgressIndicator(),

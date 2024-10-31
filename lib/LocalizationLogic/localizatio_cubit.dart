@@ -13,6 +13,8 @@ class LocalizatioCubit extends Cubit<LocalizatioState> {
     loadLag();
   }
 
+
+
   loadLag() async {
     String? savelang = await SharedPrefsHelper.getLanguage();
     if (savelang != null) {
@@ -21,11 +23,10 @@ class LocalizatioCubit extends Cubit<LocalizatioState> {
       emit(LocalChange(Locale('en')));
     }
   }
+  Locale newLocale = const Locale('en');
 
   Future<void> changeLanguage() async {
     final currentLocale = state.locale;
-    Locale newLocale;
-
     if (currentLocale.languageCode == 'en') {
       newLocale = const Locale('ar');
     } else {
@@ -33,7 +34,6 @@ class LocalizatioCubit extends Cubit<LocalizatioState> {
     }
 
     emit(LocalChange(newLocale));
-    // Save the new language preference
     await SharedPrefsHelper.setLanguage(newLocale.languageCode);
   }
 }
