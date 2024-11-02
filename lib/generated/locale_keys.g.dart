@@ -21,6 +21,12 @@ abstract class  LocaleKeys {
   static const Authentication_invalidPassword = 'Authentication.invalidPassword';
   static const Authentication = 'Authentication';
   static const homepage_home_page = 'homepage.home_page';
+  static const homepage_all_featured = 'homepage.all_featured';
+  static const homepage_sort = 'homepage.sort';
+  static const homepage_filter = 'homepage.filter';
+  static const homepage_deal_of_the_day = 'homepage.deal_of_the_day';
+  static const homepage_view_all = 'homepage.view_all';
+  static const homepage_search_bar = 'homepage.search_bar';
   static const homepage = 'homepage';
 
 }

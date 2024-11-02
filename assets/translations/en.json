@@ -21,8 +21,13 @@
     "invalidPassword": "Password must contain at least 8 characters, and a special character"
 
   },
-
   "homepage": {
-    "home_page": "Home Page"
+    "home_page": "Home Page",
+    "all_featured": "All Featured",
+    "sort": "Sort",
+    "filter": "Filter",
+    "deal_of_the_day": "Deal of the Day",
+    "view_all": "View All",
+    "search_bar": "Search any Product"
   }
 }

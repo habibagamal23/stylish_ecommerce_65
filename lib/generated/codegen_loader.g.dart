@@ -36,7 +36,13 @@ class CodegenLoader extends AssetLoader{
     "invalidPassword": "يجب أن تحتوي كلمة السر على 8 أحرف على الأقل "
   },
   "homepage": {
-    "home_page": "الصفحة الرئيسية"
+    "home_page": "الصفحة الرئيسية",
+    "all_featured": "كل المميز",
+    "sort": "ترتيب",
+    "filter": "تصفية",
+    "deal_of_the_day": "عرض اليوم",
+    "view_all": "عرض الكل",
+    "search_bar": "ابحث عن المنتج"
   }
 };
 static const Map<String,dynamic> en = {
@@ -61,7 +67,13 @@ static const Map<String,dynamic> en = {
     "invalidPassword": "Password must contain at least 8 characters, and a special character"
   },
   "homepage": {
-    "home_page": "Home Page"
+    "home_page": "Home Page",
+    "all_featured": "All Featured",
+    "sort": "Sort",
+    "filter": "Filter",
+    "deal_of_the_day": "Deal of the Day",
+    "view_all": "View All",
+    "search_bar": "Search any Product"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};

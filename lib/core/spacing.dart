@@ -5,3 +5,6 @@ SizedBox vertical (double hight){
 
   return SizedBox(height: hight.h,);
 }
+SizedBox horizontalSpace(double width) => SizedBox(
+  width: width.w,
+);
