@@ -19,7 +19,6 @@
     "invalidEmail": "Please enter a valid email",
     "enterPassword": "Please enter your password",
     "invalidPassword": "Password must contain at least 8 characters, and a special character"
-
   },
   "homepage": {
     "home_page": "Home Page",

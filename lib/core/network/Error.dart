@@ -1,19 +1,13 @@
 import 'package:dio/dio.dart';
-
 Exception handleDioError(DioException e) {
   switch (e.type) {
     case DioExceptionType.connectionError:
       return Exception("Connection error: ${e.message}");
     case DioExceptionType.badResponse:
-      return Exception("Invalid response: ${e.response?.data}");
+      return Exception("Invalid response from server: ${e.response?.data}");
+    case DioExceptionType.cancel:
+      return Exception("Request was cancelled.");
     default:
-      return Exception("Load error: ${e.message}");
+      return Exception("Unexpected error: ${e.message}");
   }
 }
-// if (e.type == DioExceptionType.connectionError) {
-//   throw Exception("Connection error: ${e.message}");
-// } else if (e.type == DioExceptionType.badResponse) {
-//   throw Exception("Invalid response: ${e.response?.data}");
-// } else {
-//   throw Exception("Load error: ${e.message}");
-// }

@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shtylishecommerce/LocalizationLogic/localizatio_cubit.dart';
-import 'package:shtylishecommerce/Myapp.dart';
+import 'package:shtylishecommerce/core/routs/routs.dart';
 import 'package:shtylishecommerce/core/widgets/cusombutton.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/ui/userNameAndPAssword.dart';
-import 'package:shtylishecommerce/main.dart';
 import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
-
 import '../../../core/spacing.dart';
 import '../../../generated/locale_keys.g.dart';
 
@@ -33,9 +31,6 @@ class Loginscreen extends StatelessWidget {
               child: IconButton(
                 icon: const Icon(Icons.language),
                 onPressed: () {
-                  // final newlang = context.locale.languageCode=='en'?'ar':'en';
-                  // cubit.chageLang(newlang);
-
                   cubit.changeLanguage();
                   final newLocale = cubit.newLocale;
                   context.setLocale(newLocale);
@@ -50,11 +45,11 @@ class Loginscreen extends StatelessWidget {
                   ?.copyWith(fontSize: 36.sp, fontWeight: FontWeight.bold),
             ),
             vertical(30),
-            Usernameandpassword(),
+            const Usernameandpassword(),
             vertical(50),
             BlocConsumer<LoginCubit, LoginState>(builder: (context, state) {
               if (state is LoginLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
@@ -62,6 +57,7 @@ class Loginscreen extends StatelessWidget {
                   text: LocaleKeys.Authentication_bottom_login.tr(),
                   onPressed: () {
                     context.read<LoginCubit>().login();
+                    Navigator.pushNamed(context, Routes.homeScreen);
                   });
             }, listener: (context, state) {
               if (state is LoginError) {
@@ -72,7 +68,7 @@ class Loginscreen extends StatelessWidget {
               }
 
               if (state is LoginSuccess) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Login Succ"),
                   backgroundColor: Colors.green,
                 ));

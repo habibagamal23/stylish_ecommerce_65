@@ -2,49 +2,58 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shtylishecommerce/core/colors.dart';
 
-import '../../../../../core/spacing.dart';
-
 class HomeCategory extends StatelessWidget {
   final String category;
-  final String image;
-  final bool isSelected;
 
   const HomeCategory({
     super.key,
     required this.category,
-    required this.image,
-    required this.isSelected,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 110.w,
-      height: 90.h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+    return Container(
+      width: 200.w,
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15.r),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CircleAvatar(
-            radius: 35.r,
-            backgroundColor:
-                isSelected ? ColorsManager.mainBlue : Colors.grey.shade200,
-            child: CircleAvatar(
-              radius: 32.r,
-              backgroundImage: AssetImage(image),
-              onBackgroundImageError: (_, __) => const Icon(Icons.error),
-            ),
-          ),
-          vertical(5),
-          Text(
-            category.toUpperCase(),
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  fontSize: 11.sp,
-                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                  color: isSelected ? ColorsManager.mainBlue : Colors.black,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                category,
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+
+                ),textAlign: TextAlign.start,
+
+              ),
+              SizedBox(height: 4.h),
+              Text(
+                "See more places",
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  fontSize: 12.sp,
+                  color: Colors.grey,
                 ),
-            textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          Icon(
+            Icons.arrow_forward_ios_sharp,
+            size: 16.sp,
+            color: Colors.black,
           ),
         ],
       ),

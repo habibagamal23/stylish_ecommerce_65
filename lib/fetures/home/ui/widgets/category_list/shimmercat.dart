@@ -10,30 +10,23 @@ class ShimmerLoading extends StatelessWidget {
     return SizedBox(
       width: 110.w,
       height: 90.h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
-            child: CircleAvatar(
-              radius: 35.r,
-              backgroundColor: Colors.grey.shade300,
-            ),
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey.shade300,
+        highlightColor: Colors.grey.shade100,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade300,
+            borderRadius: BorderRadius.circular(20.r),
           ),
-          SizedBox(height: 5.h),
-          Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade100,
+          child: Center(
             child: Container(
               width: 60.w,
-              height: 10.h,
+              height: 12.h,
               color: Colors.grey.shade300,
             ),
           ),
-        ],
+        ),
       ),
     );
   }
