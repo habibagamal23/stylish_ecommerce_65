@@ -17,7 +17,6 @@ class ProfileService {
         throw Exception("No id found. Please log in again.");
       }
 
-      // Make the GET request with the Authorization header
       final resp = await _dio.get(
         '${ApiConstants.user}/$id',
       );
@@ -28,7 +27,7 @@ class ProfileService {
         throw Exception("Failed to load user: Status code ${resp.statusCode}");
       }
     } on DioException catch (e) {
-      throw handleDioError(e); // Handle Dio-specific errors
+      throw handleDioError(e);
     } catch (e) {
       throw Exception("Unexpected error while loading user: $e");
     }

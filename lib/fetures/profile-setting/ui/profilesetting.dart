@@ -67,31 +67,26 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
 
-          // Username TextField
           _buildTextField(
               label: "Username",
               controller: context.read<ProfileCubit>().usernameController),
           const SizedBox(height: 10),
 
-          // Email TextField
           _buildTextField(
               label: "Email",
               controller: context.read<ProfileCubit>().emailController),
           const SizedBox(height: 10),
 
-          // Address TextField
           _buildTextField(
               label: "Address",
               controller: context.read<ProfileCubit>().addressController),
           const SizedBox(height: 10),
 
-          // City TextField
           _buildTextField(
               label: "City",
               controller: context.read<ProfileCubit>().cityController),
           const SizedBox(height: 10),
 
-          // Save Changes Button
           ElevatedButton(
             onPressed: () {
               // // Handle the update logic here
