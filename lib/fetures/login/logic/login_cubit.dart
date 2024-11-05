@@ -33,6 +33,7 @@ class LoginCubit extends Cubit<LoginState> {
       final LoginResponse? response = await _dioService.login(loginBody);
       if (response != null) {
         await SharedPrefsHelper.setToken(response.accessToken);
+        await SharedPrefsHelper.setid(response.id);
         emit(LoginSuccess(response));
       } else {
         emit(LoginError("Login failed: Invalid response or empty token"));

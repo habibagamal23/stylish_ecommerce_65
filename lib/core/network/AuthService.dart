@@ -8,11 +8,13 @@ class AuthService {
   final Dio _dio;
   AuthService(this._dio);
 
-
   Future<LoginResponse?> login(LoginBodyRequest loginBody) async {
     try {
+      final url = '${ApiConstants.apiBaseUrl}${ApiConstants.login}';
+      print('Attempting login with URL: $url');
+
       final res = await _dio.post(
-        ApiConstants.login,
+        url,
         data: loginBody.toJson(),
         options: Options(
           headers: {'Content-Type': 'application/json'},
@@ -32,4 +34,7 @@ class AuthService {
       throw Exception("Unexpected error occurred during login: $e");
     }
   }
+
+
+
 }

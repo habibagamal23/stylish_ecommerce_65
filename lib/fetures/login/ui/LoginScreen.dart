@@ -57,7 +57,6 @@ class Loginscreen extends StatelessWidget {
                   text: LocaleKeys.Authentication_bottom_login.tr(),
                   onPressed: () {
                     context.read<LoginCubit>().login();
-                    Navigator.pushNamed(context, Routes.homeScreen);
                   });
             }, listener: (context, state) {
               if (state is LoginError) {
@@ -72,6 +71,8 @@ class Loginscreen extends StatelessWidget {
                   content: Text("Login Succ"),
                   backgroundColor: Colors.green,
                 ));
+                Navigator.pushNamed(context, Routes.homeScreen);
+
               }
             })
           ],

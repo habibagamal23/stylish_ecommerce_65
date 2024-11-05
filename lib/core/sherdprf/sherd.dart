@@ -32,12 +32,20 @@ class SharedPrefsHelper {
     await _preferences.setInt("them", themeindex);
   }
 
-
-
   static Future<void> setToken(String token) async {
     debugPrint('SharedPrefHelper : set data token');
 
     await _preferences.setString('auth_token', token);
+  }
+
+  static int? getid() {
+    return _preferences.getInt('user_id');
+  }
+
+  static Future<void> setid(int id) async {
+    debugPrint('SharedPrefHelper : set data token');
+
+    await _preferences.setInt('user_id', id);
   }
 
   static String? getToken() {

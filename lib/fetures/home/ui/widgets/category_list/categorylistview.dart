@@ -48,9 +48,10 @@ class CategoryList extends StatelessWidget {
             ),
           );
         }
-        return const Center(
-          child: Text("Error"),
-        );
+        if (state is HomeErorr) {
+          return const SizedBox.shrink();
+        }
+        return const SizedBox.shrink();
       },
     );
   }

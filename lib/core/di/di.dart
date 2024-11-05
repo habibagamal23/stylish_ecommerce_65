@@ -6,6 +6,9 @@ import 'package:shtylishecommerce/core/network/HoemSevice.dart';
 import 'package:shtylishecommerce/fetures/home/logic/home_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 
+import '../../fetures/profile-setting/logic/profile_cubit.dart';
+import '../network/profile_service.dart';
+
 final gitit = GetIt.instance;
 
 void setypGitit() {
@@ -18,4 +21,11 @@ void setypGitit() {
   //// home
   gitit.registerLazySingleton<HomeService>(() => HomeService(gitit<Dio>()));
   gitit.registerFactory<HomeCubit>(() => HomeCubit(gitit<HomeService>()));
+
+  //profile
+  gitit.registerLazySingleton<ProfileService>(
+      () => ProfileService(gitit<Dio>()));
+  gitit.registerFactory<ProfileCubit>(() => ProfileCubit(gitit<ProfileService>()));
+
+
 }
