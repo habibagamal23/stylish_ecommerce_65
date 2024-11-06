@@ -8,6 +8,7 @@ import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 
 import 'Myapp.dart';
 import 'core/sherdprf/sherd.dart';
+import 'fetures/home/logic/home_cubit.dart';
 import 'generated/codegen_loader.g.dart';
 
 void main() async {
@@ -22,10 +23,8 @@ void main() async {
     path: 'assets/translations',
     fallbackLocale: Locale('en'),
     assetLoader: CodegenLoader(),
-    child: MultiBlocProvider(
-        providers: [
+    child: MultiBlocProvider(providers: [
       BlocProvider<LocalizatioCubit>(create: (_) => LocalizatioCubit()),
-
     ], child: MyApp()),
   ));
 }

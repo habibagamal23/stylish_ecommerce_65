@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shtylishecommerce/fetures/home/category/category_list/ShimmerLoading.dart';
 import 'package:shtylishecommerce/fetures/home/logic/home_cubit.dart';
-import 'package:shtylishecommerce/fetures/home/ui/widgets/category_list/shimmercat.dart';
+import 'package:shtylishecommerce/fetures/product/logic/product_cubit.dart';
+import '../../../../core/di/di.dart';
+import '../categorydetails.dart';
 import 'HomeCategoryCard.dart';
 
 class CategoryList extends StatelessWidget {
@@ -43,7 +46,26 @@ class CategoryList extends StatelessWidget {
                 childAspectRatio: 0.45,
               ),
               itemBuilder: (context, index) {
-                return HomeCategory(category: state.catigoris[index]);
+                return GestureDetector(
+                  onTap: () {
+                    // Call `getProductWithCategoryName` before navigation
+                    final productCubit = context.read<ProductCubit>();
+                    productCubit
+                        .getProductWithCategoryName(state.catigoris[index]);
+
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => BlocProvider.value(
+                          value:
+                              productCubit, // Reuse the existing ProductCubit instance
+                          child: CategoryProductsScreen(
+                              categoryName: state.catigoris[index]),
+                        ),
+                      ),
+                    );
+                  },
+                  child: HomeCategory(category: state.catigoris[index]),
+                );
               },
             ),
           );

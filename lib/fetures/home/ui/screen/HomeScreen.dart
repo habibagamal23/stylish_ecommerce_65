@@ -4,7 +4,6 @@ import 'package:shtylishecommerce/core/spacing.dart';
 
 import '../../../profile-setting/ui/profilesetting.dart';
 import '../widgets/HomeTopBar.dart';
-import '../widgets/category_list/categorylistview.dart';
 import '../widgets/searchbar.dart';
 import 'homebody.dart';
 

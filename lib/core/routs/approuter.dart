@@ -6,6 +6,7 @@ import 'package:shtylishecommerce/fetures/home/logic/home_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 
 import '../../fetures/home/ui/screen/HomeScreen.dart';
+import '../../fetures/home/ui/screen/homebody.dart';
 import '../../fetures/login/ui/LoginScreen.dart';
 
 class AppRouter {
@@ -13,17 +14,18 @@ class AppRouter {
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (_) => gitit<LoginCubit>(),
-            child: Loginscreen(),
-          ),
+          builder: (_) =>
+              BlocProvider(
+                create: (_) => gitit<LoginCubit>(),
+                child: Loginscreen(),
+              ),
         );
       case Routes.homeScreen:
-        return MaterialPageRoute(
-          builder: (_) =>  BlocProvider(
-          create: (_) => gitit<HomeCubit>(),
-          child:Homescreen(),
-        ));
+        return MaterialPageRoute(builder: (_) =>
+            BlocProvider(
+              create: (context) =>gitit<HomeCubit>(),
+              child: Homebody(),
+            ));
 
       default:
         return null;

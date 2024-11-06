@@ -10,26 +10,25 @@ import '../model/user.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileService profileService;
+  final ProfileService profileService;
+
   ProfileCubit(this.profileService) : super(ProfileInitial());
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
-  final TextEditingController cityController = TextEditingController();
-  final TextEditingController countryController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   User? currentUser;
+
   Future<void> loadProfile() async {
     emit(ProfileLoading());
     try {
       currentUser = await profileService.getCurrentUserbyid();
       if (currentUser != null) {
-        usernameController.text = currentUser!.username;
-        emailController.text = currentUser!.email;
-        addressController.text = currentUser!.address?.address ?? '';
-        cityController.text = currentUser!.address?.city ?? '';
-        countryController.text = currentUser!.address?.country ?? '';
+        // Populate text controllers safely, ensuring no null values are passed
+        usernameController.text = currentUser?.username ?? '';
+        emailController.text = currentUser?.email ?? '';
+        passwordController.text = currentUser?.password ?? '';
         emit(ProfileLoaded(currentUser!));
       } else {
         emit(ProfileError("User not found"));
@@ -39,14 +38,45 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
+  Future<void> updateProfile({String? imageUrl}) async {
+    emit(ProfileLoading());
+
+    if (currentUser == null) {
+      emit(ProfileError("No user loaded to update."));
+      return;
+    }
+
+    try {
+      // Prepare the updated data with the text field values
+      final updatedUser = await profileService.updateUserProfile(
+        userId: currentUser!.id,
+        username:
+            usernameController.text.isNotEmpty ? usernameController.text : null,
+        email: emailController.text.isNotEmpty ? emailController.text : null,
+        password:
+            passwordController.text.isNotEmpty ? passwordController.text : null,
+        imageUrl: imageUrl ?? currentUser!.image,
+      );
+
+      if (updatedUser != null) {
+        // Update local `currentUser` with new data and emit the updated state
+        currentUser = updatedUser;
+        emit(ProfileLoaded(currentUser!));
+      } else {
+        emit(ProfileError(
+            "Failed to update profile. No updated data received."));
+      }
+    } catch (e) {
+      emit(ProfileError("Failed to update profile: $e"));
+    }
+  }
+
   @override
   Future<void> close() {
-    // TODO: implement close
+    // Dispose of controllers when closing the cubit
     usernameController.dispose();
     emailController.dispose();
-    addressController.dispose();
-    cityController.dispose();
-    countryController.dispose();
+    passwordController.dispose();
     return super.close();
   }
 }

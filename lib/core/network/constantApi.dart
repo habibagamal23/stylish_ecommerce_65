@@ -7,4 +7,6 @@ class ApiConstants {
 
   static const String currentuser = "user/me";
   static const String user = 'users';
+  static const String products  ="products";
+  static const String productsbycategory  ="products/category";
 }
