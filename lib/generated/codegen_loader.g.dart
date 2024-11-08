@@ -33,7 +33,7 @@ class CodegenLoader extends AssetLoader{
     "enterEmail": "يرجى إدخال بريدك الإلكتروني",
     "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح",
     "enterPassword": "يرجى إدخال كلمة السر",
-    "invalidPassword": "يجب أن تحتوي كلمة السر على 8 أحرف على الأقل "
+    "invalidPassword": "يجب أن تحتوي كلمة السر على 8 أحرف على الأقل"
   },
   "homepage": {
     "home_page": "الصفحة الرئيسية",
@@ -42,7 +42,15 @@ class CodegenLoader extends AssetLoader{
     "filter": "تصفية",
     "deal_of_the_day": "عرض اليوم",
     "view_all": "عرض الكل",
-    "search_bar": "ابحث عن المنتج"
+    "search_bar": "ابحث عن المنتج",
+    "see_all": "عرض الكل",
+    "menu": "القائمة",
+    "profile_setting": "إعدادات الملف الشخصي",
+    "cart": "عربة التسوق",
+    "wishlist": "قائمة الرغبات",
+    "buy_now": "اشترِ الآن",
+    "save_change": "حفظ التغيرات",
+    "add_to_cart": "أضف إلى السلة"
   }
 };
 static const Map<String,dynamic> en = {
@@ -56,7 +64,7 @@ static const Map<String,dynamic> en = {
     "forgot_password": "Forgot Password?",
     "bottom_register": "Create Account",
     "bottom_login": "Login",
-    "dont_have_account": "Dont have an account?",
+    "dont_have_account": "Don't have an account?",
     "create_account": "Create an account",
     "Login_bottom": "Login",
     "or_continue_with": "OR Continue with",
@@ -73,7 +81,15 @@ static const Map<String,dynamic> en = {
     "filter": "Filter",
     "deal_of_the_day": "Deal of the Day",
     "view_all": "View All",
-    "search_bar": "Search any Product"
+    "search_bar": "Search any Product",
+    "see_all": "See all",
+    "menu": "Menu",
+    "profile_setting": "Profile Setting",
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "buy_now": "Buy Now",
+    "save_change": "Save Change",
+    "add_to_cart": "Add to Cart"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};

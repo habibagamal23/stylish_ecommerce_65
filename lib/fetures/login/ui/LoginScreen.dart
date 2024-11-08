@@ -8,7 +8,7 @@ import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/ui/userNameAndPAssword.dart';
 import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
-import '../../../core/spacing.dart';
+import '../../../core/helpers/spacing.dart';
 import '../../../generated/locale_keys.g.dart';
 
 class Loginscreen extends StatelessWidget {

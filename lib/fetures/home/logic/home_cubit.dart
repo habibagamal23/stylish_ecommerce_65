@@ -4,7 +4,6 @@ import 'package:shtylishecommerce/core/network/HoemSevice.dart';
 
 import '../../product/model/Product.dart';
 
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -17,7 +16,8 @@ class HomeCubit extends Cubit<HomeState> {
   List<Product> products = [];
 
   Future<void> loadHomeData() async {
-    if (categories.isNotEmpty && products.isNotEmpty) return; // Data already loaded
+    if (categories.isNotEmpty && products.isNotEmpty)
+      return;
     emit(HomeLoading());
     try {
       categories = await homeService.getAllCategories();
@@ -27,4 +27,4 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeErorr("Failed to load home data: ${e.toString()}"));
     }
   }
-  }
+}

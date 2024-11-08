@@ -28,9 +28,8 @@ class HomeService {
       final resp = await _dio.get(
         ApiConstants.products,
         queryParameters: {
-          'limit': 5, // Limit to 5 products
-          'sortBy': 'title', // Sort by title
-          'order': 'asc', // Ascending order
+          'sortBy': 'title',
+          'order': 'asc',
         },
       );
 
@@ -66,6 +65,27 @@ class HomeService {
       throw handleDioError(e);
     } catch (e) {
       throw Exception("Unexpected error while loading products: $e");
+    }
+  }
+
+  Future<List<Product>> searchProducts(String query) async {
+    try {
+      final response = await _dio.get(
+        ApiConstants.products,
+        queryParameters: {'search': query},
+      );
+
+      if (response.statusCode == 200) {
+        return (response.data['products'] as List)
+            .map((json) => Product.fromJson(json))
+            .toList();
+      } else {
+        throw Exception("Failed to load search results: Status code ${response.statusCode}");
+      }
+    } on DioException catch (e) {
+      throw handleDioError(e);
+    } catch (e) {
+      throw Exception("Unexpected error while searching products: $e");
     }
   }
 }

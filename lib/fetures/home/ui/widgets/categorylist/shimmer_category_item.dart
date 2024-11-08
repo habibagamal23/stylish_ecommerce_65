@@ -3,7 +3,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShimmerLoading extends StatelessWidget {
-  const ShimmerLoading({Key? key}) : super(key: key);
+  const ShimmerLoading({super.key});
 
   @override
   Widget build(BuildContext context) {

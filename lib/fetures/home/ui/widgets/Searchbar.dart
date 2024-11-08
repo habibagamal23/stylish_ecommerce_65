@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../generated/locale_keys.g.dart';
 
 class Searchbar extends StatelessWidget {
@@ -20,7 +19,7 @@ class Searchbar extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.w),
-            child: Icon(Icons.search, color: Colors.grey),
+            child: const Icon(Icons.search, color: Colors.grey),
           ),
           Expanded(
             child: TextField(
@@ -33,7 +32,7 @@ class Searchbar extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.w),
-            child: Icon(Icons.mic, color: Colors.grey),
+            child: const  Icon(Icons.mic, color: Colors.grey),
           ),
         ],
       ),

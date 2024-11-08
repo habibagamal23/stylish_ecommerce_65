@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../colors.dart';
-
+import '../helpers/colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class CustomButton extends StatelessWidget {
       height: 60.h,
       child: ElevatedButton(
         style: buttonStyle.copyWith(
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.r),
             ),
@@ -38,10 +37,8 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: Theme.of(context)
-              .textTheme
-              .labelLarge
-              ?.copyWith(fontSize: 16.sp) ,
+          style:
+              Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 16.sp),
         ),
       ),
     );

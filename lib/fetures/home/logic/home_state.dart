@@ -14,6 +14,6 @@ final class HomeSucces extends HomeState {
 }
 
 final class HomeErorr extends HomeState {
-  String msg;
+  final String msg;
   HomeErorr(this.msg);
 }

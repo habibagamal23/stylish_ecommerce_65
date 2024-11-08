@@ -1,16 +1,20 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shtylishecommerce/core/helpers/extention.dart';
+import 'package:shtylishecommerce/core/routs/routs.dart';
+import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 
 import '../../../../core/di/di.dart';
-import '../../../../core/spacing.dart';
+import '../../../../core/helpers/spacing.dart';
 import '../../../product/logic/product_cubit.dart';
-import '../../category/category_list/categorylistview.dart';
+import '../widgets/categorylist/category_list_bloc_builder.dart';
 import '../../logic/home_cubit.dart';
 import '../widgets/HomeTopBar.dart';
-import '../widgets/crouser.dart';
-import '../widgets/productlist/tophomeproduct.dart';
-import '../widgets/searchbar.dart';
-import '../widgets/title_seeall.dart';
+import '../widgets/BannerCarouselSlider.dart';
+import '../widgets/productlist/Product_home_list_bloc.dart';
+import '../widgets/Searchbar.dart';
+import '../widgets/TitleWithActions.dart';
 
 class Homebody extends StatelessWidget {
   const Homebody({super.key});
@@ -27,27 +31,68 @@ class Homebody extends StatelessWidget {
         ),
       ],
       child: Scaffold(
+        drawer: Drawer(
+          child: drawerCustom(context),
+        ),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: HomeTopBar(),
+        ),
         body: SingleChildScrollView(
-            child: Column(
-          children: [
-            vertical(20),
-            HomeTopBar(),
-            vertical(10),
-            Searchbar(),
-            vertical(20),
-            CategoryList(),
-            vertical(20),
-            BannerCarouselSlider(),
-            vertical(20),
-            TitleWithActions(
-              title: "ALL Features ",
-              onviewPressed: () {},
-            ),
-            TopHomeProduct(),
-
-          ],
-        )),
+          child: Column(
+            children: [
+              vertical(8),
+              const Searchbar(),
+              vertical(20),
+              const CategorysListView(),
+              vertical(20),
+              const BannerCarouselSlider(),
+              vertical(20),
+              TitleWithActions(
+                title: LocaleKeys.homepage_all_featured.tr(),
+                onviewPressed: () {},
+              ),
+              const TopHomeProduct(),
+            ],
+          ),
+        ),
       ),
     );
+  }
+
+  Widget drawerCustom(BuildContext context){
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        DrawerHeader(
+          decoration: BoxDecoration(color: Colors.red),
+          child: Center(
+            child: Text(
+              LocaleKeys.homepage_menu.tr(),
+            ),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.settings),
+          title:  Text(  LocaleKeys.homepage_profile_setting.tr(),),
+          onTap: () {
+            context.pushNamed(Routes.profileScreen);
+          },
+        ),
+        ListTile(
+          leading:const  Icon(Icons.shopping_cart),
+          title: Text(  LocaleKeys.homepage_cart.tr(),),
+          onTap: () {
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.favorite),
+          title: Text(  LocaleKeys.homepage_wishlist.tr(),),
+          onTap: () {
+          },
+        ),
+      ],
+    );
+
   }
 }

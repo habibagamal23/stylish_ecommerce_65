@@ -1,5 +1,5 @@
 class User {
-  final int id;
+  final int? id;
   final String? firstName;
   final String? lastName;
   final String? maidenName;
@@ -29,7 +29,7 @@ class User {
   final String? role;
 
   User({
-    required this.id,
+    this.id,
     this.firstName,
     this.lastName,
     this.maidenName,
@@ -70,36 +70,36 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      maidenName: json['maidenName'],
-      age: json['age'],
-      gender: json['gender'],
-      email: json['email'],
-      phone: json['phone'],
-      username: json['username'],
-      password: json['password'],
-      birthDate: json['birthDate'],
-      image: json['image'],
-      bloodGroup: json['bloodGroup'],
+      id: json['id'] as int?,
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
+      maidenName: json['maidenName'] as String?,
+      age: json['age'] as int?,
+      gender: json['gender'] as String?,
+      email: json['email'] as String?,
+      phone: json['phone'] as String?,
+      username: json['username'] as String?,
+      password: json['password'] as String?,
+      birthDate: json['birthDate'] as String?,
+      image: json['image'] as String?,
+      bloodGroup: json['bloodGroup'] as String?,
       height: (json['height'] as num?)?.toDouble(),
       weight: (json['weight'] as num?)?.toDouble(),
-      eyeColor: json['eyeColor'],
+      eyeColor: json['eyeColor'] as String?,
       hair: json['hair'] != null ? Hair.fromJson(json['hair']) : null,
-      ip: json['ip'],
+      ip: json['ip'] as String?,
       address:
           json['address'] != null ? Address.fromJson(json['address']) : null,
-      macAddress: json['macAddress'],
-      university: json['university'],
+      macAddress: json['macAddress'] as String?,
+      university: json['university'] as String?,
       bank: json['bank'] != null ? Bank.fromJson(json['bank']) : null,
       company:
           json['company'] != null ? Company.fromJson(json['company']) : null,
-      ein: json['ein'],
-      ssn: json['ssn'],
-      userAgent: json['userAgent'],
+      ein: json['ein'] as String?,
+      ssn: json['ssn'] as String?,
+      userAgent: json['userAgent'] as String?,
       crypto: json['crypto'] != null ? Crypto.fromJson(json['crypto']) : null,
-      role: json['role'],
+      role: json['role'] as String?,
     );
   }
 }
@@ -112,8 +112,8 @@ class Hair {
 
   factory Hair.fromJson(Map<String, dynamic> json) {
     return Hair(
-      color: json['color'],
-      type: json['type'],
+      color: json['color'] as String?,
+      type: json['type'] as String?,
     );
   }
 }
@@ -139,15 +139,15 @@ class Address {
 
   factory Address.fromJson(Map<String, dynamic> json) {
     return Address(
-      address: json['address'],
-      city: json['city'],
-      state: json['state'],
-      stateCode: json['stateCode'],
-      postalCode: json['postalCode'],
+      address: json['address'] as String?,
+      city: json['city'] as String?,
+      state: json['state'] as String?,
+      stateCode: json['stateCode'] as String?,
+      postalCode: json['postalCode'] as String?,
       coordinates: json['coordinates'] != null
           ? Coordinates.fromJson(json['coordinates'])
           : null,
-      country: json['country'],
+      country: json['country'] as String?,
     );
   }
 }
@@ -183,11 +183,11 @@ class Bank {
 
   factory Bank.fromJson(Map<String, dynamic> json) {
     return Bank(
-      cardExpire: json['cardExpire'],
-      cardNumber: json['cardNumber'],
-      cardType: json['cardType'],
-      currency: json['currency'],
-      iban: json['iban'],
+      cardExpire: json['cardExpire'] as String?,
+      cardNumber: json['cardNumber'] as String?,
+      cardType: json['cardType'] as String?,
+      currency: json['currency'] as String?,
+      iban: json['iban'] as String?,
     );
   }
 }
@@ -207,9 +207,9 @@ class Company {
 
   factory Company.fromJson(Map<String, dynamic> json) {
     return Company(
-      department: json['department'],
-      name: json['name'],
-      title: json['title'],
+      department: json['department'] as String?,
+      name: json['name'] as String?,
+      title: json['title'] as String?,
       address:
           json['address'] != null ? Address.fromJson(json['address']) : null,
     );
@@ -229,9 +229,9 @@ class Crypto {
 
   factory Crypto.fromJson(Map<String, dynamic> json) {
     return Crypto(
-      coin: json['coin'],
-      wallet: json['wallet'],
-      network: json['network'],
+      coin: json['coin'] as String?,
+      wallet: json['wallet'] as String?,
+      network: json['network'] as String?,
     );
   }
 }

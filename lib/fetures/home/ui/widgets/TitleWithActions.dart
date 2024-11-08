@@ -1,7 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shtylishecommerce/core/spacing.dart';
-
 import '../../../../generated/locale_keys.g.dart';
 
 class TitleWithActions extends StatelessWidget {
@@ -38,7 +37,7 @@ class TitleWithActions extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "See all",
+                  LocaleKeys.homepage_view_all.tr(),
                   style: TextStyle(color: Colors.black, fontSize: 18.sp),
                 ),
                 Icon(Icons.arrow_forward_ios_sharp, size: 17.sp, color: Colors.black),

@@ -26,56 +26,50 @@ class ProductShimmerLoading extends StatelessWidget {
         highlightColor: Colors.grey.shade100,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              height: 100.h,
-              width: double.infinity,
-              color: Colors.grey.shade300,
+            // Image placeholder
+            ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
+              child: Container(
+                height: 130.h,
+                width: 156.w,
+                color: Colors.grey.shade300,
+              ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.w),
+              padding: EdgeInsets.all(8.sp),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
+                  // Title placeholder
                   Container(
                     height: 16.h,
                     width: 120.w,
                     color: Colors.grey.shade300,
                   ),
                   SizedBox(height: 4.h),
+                  // Category placeholder
                   Container(
                     height: 12.h,
                     width: 80.w,
                     color: Colors.grey.shade300,
                   ),
                   SizedBox(height: 4.h),
-                  Row(
-                    children: [
-                      Container(
-                        height: 14.h,
-                        width: 40.w,
-                        color: Colors.grey.shade300,
-                      ),
-                      SizedBox(width: 8.w),
-                      Container(
-                        height: 12.h,
-                        width: 40.w,
-                        color: Colors.grey.shade300,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8.h),
+                  // Price placeholder
                   Container(
-                    height: 10.h,
-                    width: 100.w,
+                    height: 14.h,
+                    width: 50.w,
                     color: Colors.grey.shade300,
                   ),
                   SizedBox(height: 8.h),
+                  // Rating placeholder
                   Row(
                     children: [
                       Container(
                         height: 12.h,
-                        width: 30.w,
+                        width: 20.w,
                         color: Colors.grey.shade300,
                       ),
                       SizedBox(width: 4.w),

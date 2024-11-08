@@ -27,6 +27,14 @@ abstract class  LocaleKeys {
   static const homepage_deal_of_the_day = 'homepage.deal_of_the_day';
   static const homepage_view_all = 'homepage.view_all';
   static const homepage_search_bar = 'homepage.search_bar';
+  static const homepage_see_all = 'homepage.see_all';
+  static const homepage_menu = 'homepage.menu';
+  static const homepage_profile_setting = 'homepage.profile_setting';
+  static const homepage_cart = 'homepage.cart';
+  static const homepage_wishlist = 'homepage.wishlist';
+  static const homepage_buy_now = 'homepage.buy_now';
+  static const homepage_save_change = 'homepage.save_change';
+  static const homepage_add_to_cart = 'homepage.add_to_cart';
   static const homepage = 'homepage';
 
 }

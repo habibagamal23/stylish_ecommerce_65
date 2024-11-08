@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:shtylishecommerce/core/spacing.dart';
+import 'package:shtylishecommerce/core/helpers/spacing.dart';
 
 import '../../../profile-setting/ui/profilesetting.dart';
 import '../widgets/HomeTopBar.dart';
-import '../widgets/searchbar.dart';
+import '../widgets/Searchbar.dart';
 import 'homebody.dart';
 
 class Homescreen extends StatefulWidget {
