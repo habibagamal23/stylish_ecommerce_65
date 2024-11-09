@@ -13,7 +13,7 @@ import '../../logic/home_cubit.dart';
 import '../widgets/HomeTopBar.dart';
 import '../widgets/BannerCarouselSlider.dart';
 import '../widgets/productlist/Product_home_list_bloc.dart';
-import '../widgets/Searchbar.dart';
+import '../../../../core/widgets/Searchbar.dart';
 import '../widgets/TitleWithActions.dart';
 
 class Homebody extends StatelessWidget {
@@ -42,7 +42,12 @@ class Homebody extends StatelessWidget {
           child: Column(
             children: [
               vertical(8),
-              const Searchbar(),
+              Searchbar(
+                enabled: false,
+                onTap: () {
+                  context.pushNamed(Routes.searchScreen);
+                },
+              ),
               vertical(20),
               const CategorysListView(),
               vertical(20),
@@ -60,7 +65,7 @@ class Homebody extends StatelessWidget {
     );
   }
 
-  Widget drawerCustom(BuildContext context){
+  Widget drawerCustom(BuildContext context) {
     return ListView(
       padding: EdgeInsets.zero,
       children: [
@@ -74,25 +79,28 @@ class Homebody extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(Icons.settings),
-          title:  Text(  LocaleKeys.homepage_profile_setting.tr(),),
+          title: Text(
+            LocaleKeys.homepage_profile_setting.tr(),
+          ),
           onTap: () {
             context.pushNamed(Routes.profileScreen);
           },
         ),
         ListTile(
-          leading:const  Icon(Icons.shopping_cart),
-          title: Text(  LocaleKeys.homepage_cart.tr(),),
-          onTap: () {
-          },
+          leading: const Icon(Icons.shopping_cart),
+          title: Text(
+            LocaleKeys.homepage_cart.tr(),
+          ),
+          onTap: () {},
         ),
         ListTile(
           leading: const Icon(Icons.favorite),
-          title: Text(  LocaleKeys.homepage_wishlist.tr(),),
-          onTap: () {
-          },
+          title: Text(
+            LocaleKeys.homepage_wishlist.tr(),
+          ),
+          onTap: () {},
         ),
       ],
     );
-
   }
 }

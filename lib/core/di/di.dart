@@ -24,16 +24,16 @@ void setypGitit() {
 
   gitit.registerLazySingleton<HomeService>(() => HomeService(gitit<Dio>()));
   gitit.registerLazySingleton<HomeCubit>(() => HomeCubit(gitit<HomeService>()));
-  gitit.registerLazySingleton<ProductCubit>(() => ProductCubit(gitit<HomeService>()));
-  gitit.registerFactory<SearchCubit>(() => SearchCubit(gitit<HomeService>()));
 
+  gitit.registerLazySingleton<ProductCubit>(
+      () => ProductCubit(gitit<HomeService>()));
+
+  gitit.registerFactory<SearchCubit>(() => SearchCubit(
+      homeCubit: gitit<HomeCubit>(), homeService: gitit<HomeService>()));
 
   //profile
   gitit.registerLazySingleton<ProfileService>(
       () => ProfileService(gitit<Dio>()));
   gitit.registerFactory<ProfileCubit>(
       () => ProfileCubit(gitit<ProfileService>()));
-
-
-
 }

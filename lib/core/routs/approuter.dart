@@ -14,6 +14,8 @@ import '../../fetures/home/ui/screen/HomeScreen.dart';
 import '../../fetures/home/ui/screen/homebody.dart';
 import '../../fetures/login/ui/LoginScreen.dart';
 import '../../fetures/product/ui/productdetailes.dart';
+import '../../fetures/search/logic/search_cubit.dart';
+import '../../fetures/search/ui/searchscreen.dart';
 
 class AppRouter {
   static Route? generateRoute(RouteSettings settings) {
@@ -49,6 +51,13 @@ class AppRouter {
                   value: gitit<ProductCubit>(),
                   child: CategoryProductsScreen(
                       categoryName: settings.arguments as String),
+                ));
+
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => gitit<SearchCubit>(),
+                  child: const SearchScreen(),
                 ));
 
       default:

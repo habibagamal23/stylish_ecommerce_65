@@ -4,7 +4,7 @@ import 'package:shtylishecommerce/core/helpers/spacing.dart';
 
 import '../../../profile-setting/ui/profilesetting.dart';
 import '../widgets/HomeTopBar.dart';
-import '../widgets/Searchbar.dart';
+import '../../../../core/widgets/Searchbar.dart';
 import 'homebody.dart';
 
 class Homescreen extends StatefulWidget {

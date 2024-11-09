@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/wigdets/profile_image.dart';
-
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/cusombutton.dart';
 import '../../../../core/widgets/textfieldcutom.dart';
@@ -33,7 +32,13 @@ class ProfileBody extends StatelessWidget {
             labelText: LocaleKeys.Authentication_user_name.tr(),
             controller: cubit.usernameController,
           ),
-          vertical(10),
+          vertical(20),
+          CustomFormTextField(
+            hintText: LocaleKeys.Authentication_enterEmail.tr(),
+            labelText: LocaleKeys.Authentication_enterEmail.tr(),
+            controller: cubit.emailController,
+          ),
+          vertical(20),
           CustomFormTextField(
             isObscureText: true,
             hintText: LocaleKeys.Authentication_password.tr(),
