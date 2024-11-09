@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shtylishecommerce/fetures/home/ui/widgets/categorylist/shimmer_category_item.dart';
-import 'package:shtylishecommerce/fetures/home/logic/home_cubit.dart';
+import 'package:shtylishecommerce/fetures/home/logic/logic_home/home_cubit.dart';
 import 'category_item.dart';
 
 class CategorysListView extends StatelessWidget {

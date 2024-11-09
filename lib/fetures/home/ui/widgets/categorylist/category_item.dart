@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shtylishecommerce/core/helpers/extention.dart';
 import 'package:shtylishecommerce/core/routs/routs.dart';
 
-import '../../../../product/logic/product_cubit.dart';
+import '../../../logic/logic_categories/CategoriesCubit.dart';
 
 class HomeCategory extends StatelessWidget {
   final String category;
@@ -16,7 +16,7 @@ class HomeCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final productCubit = context.read<ProductCubit>();
+        final productCubit = context.read<CategoriesCubit>();
         productCubit.getProductWithCategoryName(category);
         context.pushNamed(Routes.categoriesScreenDeatiles, arguments: category);
       },

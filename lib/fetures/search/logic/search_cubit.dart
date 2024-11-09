@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import '../../../core/network/HoemSevice.dart';
-import '../../home/logic/home_cubit.dart';
+import '../../home/logic/logic_home/home_cubit.dart';
 import '../../product/model/Product.dart';
 
 part 'search_state.dart';

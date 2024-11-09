@@ -5,7 +5,7 @@ import 'package:shtylishecommerce/fetures/product/ui/productitem.dart';
 import 'package:shtylishecommerce/fetures/product/ui/widgets/productsShimmer.dart';
 
 import '../../../../product/ui/productdetailes.dart';
-import '../../../logic/home_cubit.dart';
+import '../../../logic/logic_home/home_cubit.dart';
 
 class TopHomeProduct extends StatelessWidget {
   const TopHomeProduct({Key? key}) : super(key: key);

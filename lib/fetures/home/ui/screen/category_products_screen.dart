@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../product/logic/product_cubit.dart';
+import '../../logic/logic_categories/CategoriesCubit.dart';
 import '../../../product/ui/productitem.dart';
 import '../../../product/ui/widgets/productsShimmer.dart';
 
@@ -22,7 +22,7 @@ class CategoryProductsScreen extends StatelessWidget {
             expandedHeight: 80.0,
             backgroundColor: Colors.red,
           ),
-          BlocBuilder<ProductCubit, ProductState>(
+          BlocBuilder<CategoriesCubit, CategoriesState>(
             builder: (context, state) {
               if (state is CategoryProductsLoading) {
                 return SliverPadding(

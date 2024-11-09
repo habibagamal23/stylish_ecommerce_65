@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:shtylishecommerce/core/network/HoemSevice.dart';
 
-import '../../product/model/Product.dart';
+import '../../../product/model/Product.dart';
 
 part 'home_state.dart';
 

@@ -1,31 +1,34 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/network/HoemSevice.dart';
 import '../model/Product.dart';
 
 part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
-  HomeService homeService;
-  ProductCubit(this.homeService) : super(CategoryProductsInitial());
-  Map<String, List<Product>> categoryProductCache = {};
+  ProductCubit() : super(ProductInitial());
+  int quantity = 1;
+  double totalPrice = 0.0;
 
-  Future<void> getProductWithCategoryName(String categoryName) async {
-    if (categoryProductCache.containsKey(categoryName)) {
-      emit(CategoryProductsLoaded(categoryProductCache[categoryName]!));
-      return;
+  void initializeQuantityAndPrice(Product product) {
+    quantity = 1;
+    totalPrice = product.price;
+    emit(ProductQuantityUpdated(quantity, totalPrice));
+  }
+
+  void incrementQuantity(Product product) {
+    if (quantity < product.stock) {
+      quantity++;
+      totalPrice = quantity * product.price;
+      emit(ProductQuantityUpdated(quantity, totalPrice));
     }
+  }
 
-    emit(CategoryProductsLoading());
-    try {
-      final categoryProducts =
-          await homeService.getProductWithCategoryName(categoryName);
-      categoryProductCache[categoryName] = categoryProducts;
-      emit(CategoryProductsLoaded(categoryProducts));
-    } catch (e) {
-      emit(CategoryProductsError(
-          "Failed to load category products: ${e.toString()}"));
+  void decrementQuantity(Product product) {
+    if (quantity > 1) {
+      quantity--;
+      totalPrice = quantity * product.price;
+      emit(ProductQuantityUpdated(quantity, totalPrice));
     }
   }
 }

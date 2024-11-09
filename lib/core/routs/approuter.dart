@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shtylishecommerce/core/di/di.dart';
 import 'package:shtylishecommerce/core/routs/routs.dart';
-import 'package:shtylishecommerce/fetures/home/logic/home_cubit.dart';
+import 'package:shtylishecommerce/fetures/home/logic/logic_home/home_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
-import 'package:shtylishecommerce/fetures/product/logic/product_cubit.dart';
+import 'package:shtylishecommerce/fetures/home/logic/logic_categories/CategoriesCubit.dart';
 import 'package:shtylishecommerce/fetures/product/model/Product.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/profilesetting.dart';
@@ -41,14 +41,13 @@ class AppRouter {
 
       case Routes.productDetailsScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              ProductDetailsScreen(product: settings.arguments as Product),
+          builder: (_) => ProductDetailsScreen(product: settings.arguments as Product),
         );
 
       case Routes.categoriesScreenDeatiles:
         return MaterialPageRoute(
             builder: (_) => BlocProvider.value(
-                  value: gitit<ProductCubit>(),
+                  value: gitit<CategoriesCubit>(),
                   child: CategoryProductsScreen(
                       categoryName: settings.arguments as String),
                 ));

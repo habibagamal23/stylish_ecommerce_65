@@ -7,9 +7,9 @@ import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../product/logic/product_cubit.dart';
+import '../../logic/logic_categories/CategoriesCubit.dart';
 import '../widgets/categorylist/category_list_bloc_builder.dart';
-import '../../logic/home_cubit.dart';
+import '../../logic/logic_home/home_cubit.dart';
 import '../widgets/HomeTopBar.dart';
 import '../widgets/BannerCarouselSlider.dart';
 import '../widgets/productlist/Product_home_list_bloc.dart';
@@ -27,7 +27,7 @@ class Homebody extends StatelessWidget {
           value: gitit<HomeCubit>(),
         ),
         BlocProvider.value(
-          value: gitit<ProductCubit>(),
+          value: gitit<CategoriesCubit>(),
         ),
       ],
       child: Scaffold(
