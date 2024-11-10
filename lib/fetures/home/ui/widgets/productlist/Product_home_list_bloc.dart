@@ -13,6 +13,7 @@ class TopHomeProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       if (state is HomeLoading) {
+      //task add shimmer
         return CircularProgressIndicator();
       }
       if (state is HomeSucces) {
