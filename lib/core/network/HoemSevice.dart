@@ -15,14 +15,11 @@ class HomeService {
         throw Exception(
             "Failed to load categories: Status code ${resp.statusCode}");
       }
-    } on DioException catch (e) {
-      throw handleDioError(e);
-    } catch (e) {
+    }catch (e) {
       throw Exception("Unexpected error while loading categories: $e");
     }
   }
 
-  // Function to fetch limited and sorted products
   Future<List<Product>> getLimitedSortedProducts() async {
     try {
       final resp = await _dio.get(
@@ -59,7 +56,8 @@ class HomeService {
             .map((json) => Product.fromJson(json))
             .toList();
       } else {
-        throw Exception("Failed to load products: Status code ${resp.statusCode}");
+        throw Exception(
+            "Failed to load products: Status code ${resp.statusCode}");
       }
     } on DioException catch (e) {
       throw handleDioError(e);
@@ -80,7 +78,8 @@ class HomeService {
             .map((json) => Product.fromJson(json))
             .toList();
       } else {
-        throw Exception("Failed to load search results: Status code ${response.statusCode}");
+        throw Exception(
+            "Failed to load search results: Status code ${response.statusCode}");
       }
     } on DioException catch (e) {
       throw handleDioError(e);

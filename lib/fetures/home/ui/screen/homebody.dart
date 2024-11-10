@@ -26,9 +26,6 @@ class Homebody extends StatelessWidget {
         BlocProvider.value(
           value: gitit<HomeCubit>(),
         ),
-        BlocProvider.value(
-          value: gitit<CategoriesCubit>(),
-        ),
       ],
       child: Scaffold(
         drawer: Drawer(
@@ -57,7 +54,7 @@ class Homebody extends StatelessWidget {
                 title: LocaleKeys.homepage_all_featured.tr(),
                 onviewPressed: () {},
               ),
-              const TopHomeProduct(),
+              TopHomeProduct()
             ],
           ),
         ),

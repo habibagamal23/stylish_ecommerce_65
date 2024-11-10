@@ -16,21 +16,20 @@ class ProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<ProfileCubit>();
-
+ final    cubit = context.read<ProfileCubit>();
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           ProfileImage(
             imageUrl: user.image,
-            onImagePicked: (path) => cubit.updateProfile(imageUrl: path),
+            onImagePicked: (path) => cubit.updateprofile(imgeUrl: path)
           ),
           vertical(20),
           CustomFormTextField(
             hintText: LocaleKeys.Authentication_user_name.tr(),
             labelText: LocaleKeys.Authentication_user_name.tr(),
-            controller: cubit.usernameController,
+            controller :cubit.usernameController,
           ),
           vertical(20),
           CustomFormTextField(
@@ -48,7 +47,9 @@ class ProfileBody extends StatelessWidget {
           vertical(20),
           CustomButton(
             text: LocaleKeys.homepage_save_change.tr(),
-            onPressed: cubit.updateProfile,
+            onPressed: () {
+              cubit.updateprofile();
+            },
           ),
         ],
       ),

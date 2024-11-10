@@ -12,7 +12,6 @@ import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 import '../../../core/di/di.dart';
 import '../../../core/helpers/spacing.dart';
 import '../../home/logic/logic_categories/CategoriesCubit.dart';
-import '../logic/product_cubit.dart';
 import '../model/Product.dart';
 
 class ProductDetailsScreen extends StatelessWidget {

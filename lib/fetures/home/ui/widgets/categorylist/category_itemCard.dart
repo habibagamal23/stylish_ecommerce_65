@@ -16,10 +16,7 @@ class HomeCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final productCubit = context.read<CategoriesCubit>();
-        productCubit.getProductWithCategoryName(category);
-        context.pushNamed(Routes.categoriesScreenDeatiles, arguments: category);
-      },
+        },
       child: Container(
         width: 220.w,
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),

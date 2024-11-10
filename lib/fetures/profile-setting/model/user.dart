@@ -59,7 +59,79 @@ class User {
     this.role,
   });
 
-  Map<String, dynamic> toUpdateJson() {
+
+  //copy with function
+  // To create a new User instance
+  // with any updated fields without modifying the original instance.
+  //how to use ?
+  // final updatedUser = originalUser.copyWith(email: "newemail@example.com");
+
+  User copyWith({
+    int? id,
+    String? firstName,
+    String? lastName,
+    String? maidenName,
+    int? age,
+    String? gender,
+    String? email,
+    String? phone,
+    String? username,
+    String? password,
+    String? birthDate,
+    String? image,
+    String? bloodGroup,
+    double? height,
+    double? weight,
+    String? eyeColor,
+    Hair? hair,
+    String? ip,
+    Address? address,
+    String? macAddress,
+    String? university,
+    Bank? bank,
+    Company? company,
+    String? ein,
+    String? ssn,
+    String? userAgent,
+    Crypto? crypto,
+    String? role,
+  }) {
+    return User(
+      id: id ?? this.id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      maidenName: maidenName ?? this.maidenName,
+      age: age ?? this.age,
+      gender: gender ?? this.gender,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+      username: username ?? this.username,
+      password: password ?? this.password,
+      birthDate: birthDate ?? this.birthDate,
+      image: image ?? this.image,
+      bloodGroup: bloodGroup ?? this.bloodGroup,
+      height: height ?? this.height,
+      weight: weight ?? this.weight,
+      eyeColor: eyeColor ?? this.eyeColor,
+      hair: hair ?? this.hair,
+      ip: ip ?? this.ip,
+      address: address ?? this.address,
+      macAddress: macAddress ?? this.macAddress,
+      university: university ?? this.university,
+      bank: bank ?? this.bank,
+      company: company ?? this.company,
+      ein: ein ?? this.ein,
+      ssn: ssn ?? this.ssn,
+      userAgent: userAgent ?? this.userAgent,
+      crypto: crypto ?? this.crypto,
+      role: role ?? this.role,
+    );
+  }
+
+  //This function allows us to dynamically generate a
+  // JSON-compatible map of only the updated values
+
+  Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     if (username != null) data['username'] = username;
     if (email != null) data['email'] = email;

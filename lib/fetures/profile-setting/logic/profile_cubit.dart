@@ -1,16 +1,17 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
-import 'package:shtylishecommerce/core/network/profile_service.dart';
+import 'package:shtylishecommerce/core/network/ProfileService.dart';
 
 import '../model/user.dart';
 
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  final ProfileService profileService;
+  ProfileService profileService;
 
   ProfileCubit(this.profileService) : super(ProfileInitial());
 
@@ -18,72 +19,72 @@ class ProfileCubit extends Cubit<ProfileState> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  User? currentUser;
+  User? currentuser;
 
-  Future<void> loadProfile() async {
+  Future getuser() async {
     emit(ProfileLoading());
+
     try {
-      currentUser = await profileService.getCurrentUserbyid();
-      if (currentUser != null) {
-        _populateControllers();
-        emit(ProfileLoaded(currentUser!));
+      currentuser = await profileService.getCurrentuser();
+
+      if (currentuser != null) {
+        fillTextfield();
+        emit(ProfileLoaded(currentuser!));
       } else {
-        emit(ProfileError("User not found"));
+        emit(ProfileError(" Uesr not found"));
       }
     } catch (e) {
-      emit(ProfileError("Failed to load profile: $e"));
+      emit(ProfileError(" Uesr not found $e"));
     }
   }
 
-  Future<void> updateProfile({String? imageUrl}) async {
-    if (currentUser == null) {
-      emit(ProfileError("No user loaded to update."));
+  Future updateprofile({String? imgeUrl}) async {
+
+    if (currentuser == null) {
+      emit(ProfileError(" Uesr not found to update "));
       return;
     }
 
-    if (!_hasChanges(imageUrl)) {
-      emit(ProfileError("No changes detected to update."));
+    if (!haschange(imgeUrl)) {
+      emit(ProfileError(" Not data chnage"));
       return;
     }
 
-    emit(ProfileUpdating());
-
     try {
-      final updatedUser = await profileService.updateUserProfile(
-        userId: currentUser!.id!,
-        username: _getUpdatedValue(usernameController.text, currentUser!.username),
-        email: _getUpdatedValue(emailController.text, currentUser!.email),
-        password: _getUpdatedValue(passwordController.text, currentUser!.password),
-        imageUrl: imageUrl ?? currentUser!.image,
-      );
+      emit(ProfileUpdating());
 
-      if (updatedUser != null) {
-        currentUser = updatedUser;
-        _populateControllers();
-        emit(ProfileLoaded(currentUser!));
-      } else {
-        emit(ProfileError("Failed to update profile. No updated data received."));
+      currentuser = currentuser!.copyWith(
+          username: updateValue(usernameController.text, currentuser?.username),
+          email: updateValue(emailController.text, currentuser?.email),
+          password: updateValue(passwordController.text, currentuser?.password),
+          image: imgeUrl ?? currentuser!.image);
+
+      final updateuser = await profileService.updateProfile(currentuser!);
+      if (updateuser != null) {
+        currentuser = updateuser;
+        fillTextfield();
+        emit(ProfileLoaded(currentuser!));
       }
     } catch (e) {
-      emit(ProfileError("Failed to update profile: $e"));
+      emit(ProfileError(" Uesr not found $e"));
     }
   }
 
-  bool _hasChanges(String? newImageUrl) {
-    return usernameController.text != (currentUser?.username ?? '') ||
-        emailController.text != (currentUser?.email ?? '') ||
-        passwordController.text != (currentUser?.password ?? '') ||
-        newImageUrl != currentUser?.image;
+  bool haschange(String? imgUrl) {
+    return usernameController.text != (currentuser?.username ?? '') ||
+        emailController.text != (currentuser?.email ?? '') ||
+        passwordController.text != (currentuser?.password ?? '') ||
+        imgUrl != currentuser?.image;
   }
 
-  String? _getUpdatedValue(String newValue, String? currentValue) {
-    return newValue.isNotEmpty && newValue != currentValue ? newValue : null;
+  String? updateValue(String newvalue, String? currentvalue) {
+    return newvalue.isNotEmpty && newvalue != currentvalue ? newvalue : null;
   }
 
-  void _populateControllers() {
-    usernameController.text = currentUser?.username ?? '';
-    emailController.text = currentUser?.email ?? '';
-    passwordController.text = currentUser?.password ?? '';
+  void fillTextfield() {
+    usernameController.text = currentuser?.username ?? '';
+    passwordController.text = currentuser?.password ?? '';
+    emailController.text = currentuser?.email ?? '';
   }
 
   @override

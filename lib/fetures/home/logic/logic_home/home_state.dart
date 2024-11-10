@@ -9,8 +9,8 @@ final class HomeLoading extends HomeState {}
 
 final class HomeSucces extends HomeState {
   List<String> catigoris;
-  final List<Product> products;
-  HomeSucces(this.catigoris, this.products);
+  List<Product> products;
+  HomeSucces(this.catigoris , this.products);
 }
 
 final class HomeErorr extends HomeState {

@@ -24,7 +24,7 @@ class ProfileImage extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundImage: _buildImageProvider(),
+            backgroundImage: buildImageProvider(),
             backgroundColor: Colors.grey,
           ),
           GestureDetector(
@@ -33,9 +33,6 @@ class ProfileImage extends StatelessWidget {
               final pickedFile = await picker.pickImage(
                 source: ImageSource.camera,
                 imageQuality: 50,
-                requestFullMetadata: false,
-                maxHeight: 1920,
-                maxWidth: 1080,
               );
 
               if (pickedFile != null) {
@@ -62,7 +59,7 @@ class ProfileImage extends StatelessWidget {
     );
   }
 
-  ImageProvider _buildImageProvider() {
+  ImageProvider buildImageProvider() {
     if (imageUrl != null) {
       return imageUrl!.startsWith('http')
           ? NetworkImage(imageUrl!)

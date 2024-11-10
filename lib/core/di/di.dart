@@ -3,13 +3,11 @@ import 'package:get_it/get_it.dart';
 import 'package:shtylishecommerce/core/network/AuthService.dart';
 import 'package:shtylishecommerce/core/network/DioFactory.dart';
 import 'package:shtylishecommerce/core/network/HoemSevice.dart';
+import 'package:shtylishecommerce/core/network/ProfileService.dart';
 import 'package:shtylishecommerce/fetures/home/logic/logic_home/home_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
-
-import '../../fetures/home/logic/logic_categories/CategoriesCubit.dart';
-import '../../fetures/profile-setting/logic/profile_cubit.dart';
-import '../../fetures/search/logic/search_cubit.dart';
-import '../network/profile_service.dart';
+import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
+import 'package:shtylishecommerce/fetures/search/logic/search_cubit.dart';
 
 final gitit = GetIt.instance;
 
@@ -25,15 +23,11 @@ void setypGitit() {
   gitit.registerLazySingleton<HomeService>(() => HomeService(gitit<Dio>()));
   gitit.registerLazySingleton<HomeCubit>(() => HomeCubit(gitit<HomeService>()));
 
-  gitit.registerLazySingleton<CategoriesCubit>(
-      () => CategoriesCubit(gitit<HomeService>()));
-
-  gitit.registerFactory<SearchCubit>(() => SearchCubit(
-      homeCubit: gitit<HomeCubit>(), homeService: gitit<HomeService>()));
-
   //profile
   gitit.registerLazySingleton<ProfileService>(
       () => ProfileService(gitit<Dio>()));
   gitit.registerFactory<ProfileCubit>(
       () => ProfileCubit(gitit<ProfileService>()));
+
+  gitit.registerFactory<SearchCubit>(() => SearchCubit(gitit<HomeCubit>()));
 }
