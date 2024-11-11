@@ -28,17 +28,7 @@ class ProfileImage extends StatelessWidget {
             backgroundColor: Colors.grey,
           ),
           GestureDetector(
-            onTap: () async {
-              final picker = ImagePicker();
-              final pickedFile = await picker.pickImage(
-                source: ImageSource.camera,
-                imageQuality: 50,
-              );
-
-              if (pickedFile != null) {
-                onImagePicked(pickedFile.path);
-              }
-            },
+            onTap: () => showImageSourceDialog(context),
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.red,
@@ -57,6 +47,45 @@ class ProfileImage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void showImageSourceDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Select Image Source"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text("Camera"),
+                onTap: () => pickImage(context, ImageSource.camera),
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text("Gallery"),
+                onTap: () => pickImage(context, ImageSource.gallery),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> pickImage(BuildContext context, ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(
+      source: source,
+      imageQuality: 50,
+    );
+
+    if (pickedFile != null) {
+      onImagePicked(pickedFile.path);
+    }
+    Navigator.of(context).pop();
   }
 
   ImageProvider buildImageProvider() {

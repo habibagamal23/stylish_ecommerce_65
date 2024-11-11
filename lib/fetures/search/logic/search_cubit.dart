@@ -29,7 +29,7 @@ class SearchCubit extends Cubit<SearchState> {
         }).toList();
 
         // if result is empyt go to api
-        // cal searchProducts
+        // cal searchProducts func from home service
 
         emit(SearchSuccess(result));
       }
