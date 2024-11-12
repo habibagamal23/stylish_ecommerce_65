@@ -9,4 +9,11 @@ class ApiConstants {
   static const String user = 'users';
   static const String products  ="products";
   static const String productsbycategory  ="products/category";
+
+  static const String cart = "carts";
+  static const String userCart = "$cart/user";
+  static const String addCart = "$cart/add";
+
+
+
 }

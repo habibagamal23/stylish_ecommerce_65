@@ -75,6 +75,34 @@ class Product {
       thumbnail: json['thumbnail'], // Nullable
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      if (description != null) 'description': description,
+      if (category != null) 'category': category,
+      'price': price,
+      'discountPercentage': discountPercentage,
+      'rating': rating,
+      'stock': stock,
+      'tags': tags,
+      if (brand != null) 'brand': brand,
+      if (sku != null) 'sku': sku,
+      'weight': weight,
+      'dimensions': dimensions.toJson(),
+      if (warrantyInformation != null) 'warrantyInformation': warrantyInformation,
+      if (shippingInformation != null) 'shippingInformation': shippingInformation,
+      'availabilityStatus': availabilityStatus,
+      'reviews': reviews.map((review) => review.toJson()).toList(),
+      'returnPolicy': returnPolicy,
+      'minimumOrderQuantity': minimumOrderQuantity,
+      'meta': meta.toJson(),
+      'images': images,
+      if (thumbnail != null) 'thumbnail': thumbnail,
+    };
+  }
+
 }
 
 
