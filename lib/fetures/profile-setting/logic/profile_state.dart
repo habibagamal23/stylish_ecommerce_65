@@ -13,6 +13,12 @@ class ProfileLoaded extends ProfileState {
 }
 class ProfileUpdating extends ProfileState {
 }
+class AddressUpdatedState extends ProfileState {
+  final selectedAddress;
+  AddressUpdatedState(this.selectedAddress);
+}
+
+
 
 class ProfileError extends ProfileState {
   final String message;

@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/wigdets/profile_image.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/cusombutton.dart';
 import '../../../../core/widgets/textfieldcutom.dart';
 import '../../../../generated/locale_keys.g.dart';
+import '../../../checkout/addadress/map.dart';
+import '../../../checkout/addadress/mapscreen.dart';
 import '../../model/user.dart';
 
 class ProfileBody extends StatelessWidget {
@@ -44,6 +47,12 @@ class ProfileBody extends StatelessWidget {
             hintText: LocaleKeys.Authentication_password.tr(),
             labelText: LocaleKeys.Authentication_password.tr(),
             controller: cubit.passwordController,
+          ),
+          vertical(20),
+          CustomFormTextField(
+            hintText: "Adress",
+            labelText: "Adress",
+            controller: cubit.addressController,
           ),
           vertical(20),
           CustomButton(

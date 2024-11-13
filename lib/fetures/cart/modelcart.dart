@@ -1,8 +1,11 @@
+import 'package:shtylishecommerce/fetures/product/ui/productitem.dart';
+
 import '../product/model/Product.dart';
+import 'cartproduct.dart';
 
 class Cart {
   final int id;
-  final List<Product> products;
+  final List<CartProduct> products;
   final double total;
   final double discountedTotal;
   final int userId;
@@ -23,7 +26,7 @@ class Cart {
     return Cart(
       id: json['id'],
       products: (json['products'] as List)
-          .map((productJson) => Product.fromJson(productJson))
+          .map((productJson) => CartProduct.fromJson(productJson))
           .toList(),
       total: (json['total'] ?? 0.0).toDouble(),
       discountedTotal: (json['discountedTotal'] ?? 0.0).toDouble(),

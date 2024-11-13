@@ -10,9 +10,17 @@ import 'Myapp.dart';
 import 'core/sherdprf/sherd.dart';
 import 'fetures/home/logic/logic_home/home_cubit.dart';
 import 'generated/codegen_loader.g.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final GoogleMapsFlutterPlatform mapsImplementation =
+      GoogleMapsFlutterPlatform.instance;
+  if (mapsImplementation is GoogleMapsFlutterAndroid) {
+    // Force Hybrid Composition mode.
+    mapsImplementation.useAndroidViewSurface = true;
+  }
   await SharedPrefsHelper.init();
   await EasyLocalization.ensureInitialized();
   setypGitit();

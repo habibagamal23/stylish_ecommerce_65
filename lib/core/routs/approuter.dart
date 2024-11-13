@@ -9,6 +9,8 @@ import 'package:shtylishecommerce/fetures/product/model/Product.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/profilesetting.dart';
 
+import '../../fetures/checkout/checkout.dart';
+import '../../fetures/checkout/logic/checkout_cubit.dart';
 import '../../fetures/home/ui/screen/category_products_screen.dart';
 import '../../fetures/home/ui/screen/HomeScreen.dart';
 import '../../fetures/home/ui/screen/homebody.dart';
@@ -58,6 +60,13 @@ class AppRouter {
                   create: (context) => gitit<SearchCubit>(),
                   child: const SearchScreen(),
                 ));
+
+      case Routes.checkoutScreen:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => gitit<CheckoutCubit>(),
+              child: const ConfirmOrderScreen(),
+            ));
 
       default:
         return null;

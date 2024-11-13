@@ -64,6 +64,9 @@ class User {
     if (username != null) data['username'] = username;
     if (email != null) data['email'] = email;
     if (password != null) data['password'] = password;
+    if (address != null) {
+      data['address'] = address!.toUpdateJson(); // Corrected here
+    }
     if (image != null) data['image'] = image;
     return data;
   }
@@ -104,25 +107,10 @@ class User {
   }
 }
 
-class Hair {
-  final String? color;
-  final String? type;
-
-  Hair({this.color, this.type});
-
-  factory Hair.fromJson(Map<String, dynamic> json) {
-    return Hair(
-      color: json['color'] as String?,
-      type: json['type'] as String?,
-    );
-  }
-}
-
 class Address {
   final String? address;
   final String? city;
   final String? state;
-  final String? stateCode;
   final String? postalCode;
   final Coordinates? coordinates;
   final String? country;
@@ -131,7 +119,6 @@ class Address {
     this.address,
     this.city,
     this.state,
-    this.stateCode,
     this.postalCode,
     this.coordinates,
     this.country,
@@ -142,13 +129,23 @@ class Address {
       address: json['address'] as String?,
       city: json['city'] as String?,
       state: json['state'] as String?,
-      stateCode: json['stateCode'] as String?,
       postalCode: json['postalCode'] as String?,
       coordinates: json['coordinates'] != null
           ? Coordinates.fromJson(json['coordinates'])
           : null,
       country: json['country'] as String?,
     );
+  }
+
+  Map<String, dynamic> toUpdateJson() {
+    return {
+      'address': address,
+      'city': city,
+      'state': state,
+      'postalCode': postalCode,
+      'country': country,
+      'coordinates': coordinates != null ? coordinates!.toJson() : null,
+    };
   }
 }
 
@@ -162,6 +159,27 @@ class Coordinates {
     return Coordinates(
       lat: (json['lat'] as num?)?.toDouble(),
       lng: (json['lng'] as num?)?.toDouble(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'lat': lat,
+      'lng': lng,
+    };
+  }
+}
+
+class Hair {
+  final String? color;
+  final String? type;
+
+  Hair({this.color, this.type});
+
+  factory Hair.fromJson(Map<String, dynamic> json) {
+    return Hair(
+      color: json['color'] as String?,
+      type: json['type'] as String?,
     );
   }
 }

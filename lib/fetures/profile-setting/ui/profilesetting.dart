@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/wigdets/profile_body.dart';
 import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 
+import '../../checkout/addadress/map.dart';
 import '../logic/profile_cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -32,7 +34,13 @@ class ProfileScreen extends StatelessWidget {
           if (state is ProfileLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ProfileLoaded) {
-            return ProfileBody(user: state.user);
+            final profileCubit = context.read<ProfileCubit>();
+
+            return Column(
+              children: [
+                ProfileBody(user: state.user),
+              ],
+            );
           } else if (state is ProfileError) {
             return Center(child: Text(state.message));
           } else {

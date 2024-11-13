@@ -3,6 +3,7 @@ import 'package:shtylishecommerce/fetures/product/model/Product.dart';
 
 import '../../core/network/Error.dart';
 import '../../core/network/constantApi.dart';
+import 'cartproduct.dart';
 import 'modelcart.dart';
 
 class CartService {
@@ -29,11 +30,13 @@ class CartService {
   Future<Cart> addProductsToCart({
     required int userId,
     required Product products,
+    required int quantity
   }) async {
     try {
       final data = {
         'userId': userId,
         'products': products.toJson(),
+        'quantity': quantity
       };
 
       final response = await _dio.post(
@@ -57,7 +60,7 @@ class CartService {
 
   Future<Cart> updateCart({
     required int cartId,
-    required Product products,
+    required CartProduct products,
     bool merge = true,
   }) async {
     try {

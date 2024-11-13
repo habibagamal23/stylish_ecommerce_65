@@ -39,13 +39,16 @@ class ProfileService {
     String? email,
     String? password,
     String? imageUrl,
+    Map<String, dynamic>? address,
   }) async {
     try {
+      // Build the data map to include only non-null fields
       final data = {
         if (username != null) 'username': username,
         if (email != null) 'email': email,
         if (password != null) 'password': password,
         if (imageUrl != null) 'image': imageUrl,
+        if (address != null) 'address': address, // Include address if provided
       };
 
       final response = await _dio.put(

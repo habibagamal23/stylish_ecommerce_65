@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shtylishecommerce/core/helpers/colors.dart';
+import 'package:shtylishecommerce/core/helpers/extention.dart';
+import 'package:shtylishecommerce/core/routs/routs.dart';
 import 'package:shtylishecommerce/core/widgets/cusombutton.dart';
 import 'package:shtylishecommerce/fetures/product/ui/widgets/ProductImageViewer.dart';
 import 'package:shtylishecommerce/fetures/product/ui/widgets/ProductInfoSection.dart';
@@ -11,6 +13,7 @@ import 'package:shtylishecommerce/fetures/product/ui/widgets/name_rating.dart';
 import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 import '../../../core/di/di.dart';
 import '../../../core/helpers/spacing.dart';
+import '../../checkout/addadress/add adress.dart';
 import '../../home/logic/logic_categories/CategoriesCubit.dart';
 import '../logic/product_cubit.dart';
 import '../model/Product.dart';
@@ -39,8 +42,7 @@ class ProductDetailsScreen extends StatelessWidget {
             vertical(20),
             ProductInfoSection(product: product),
             vertical(20),
-            Text('Description',
-                style: Theme.of(context).textTheme.titleSmall),
+            Text('Description', style: Theme.of(context).textTheme.titleSmall),
             Text(product.description ?? 'No description available'),
             vertical(20),
             ReviewSection(reviews: product.reviews),
@@ -80,7 +82,10 @@ class ProductDetailsScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.w),
               child: CustomButton(
-                  text: LocaleKeys.homepage_buy_now.tr(), onPressed: () {}),
+                  text: LocaleKeys.homepage_buy_now.tr(),
+                  onPressed: () {
+                    context.pushNamed(Routes.checkoutScreen);
+                  }),
             ),
           ),
           Expanded(
