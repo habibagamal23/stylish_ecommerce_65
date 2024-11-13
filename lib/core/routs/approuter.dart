@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shtylishecommerce/core/di/di.dart';
 import 'package:shtylishecommerce/core/routs/routs.dart';
-import 'package:shtylishecommerce/fetures/checkout/checkout_cubit.dart';
 import 'package:shtylishecommerce/fetures/home/logic/logic_home/home_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 import 'package:shtylishecommerce/fetures/home/logic/logic_categories/CategoriesCubit.dart';
@@ -10,7 +9,7 @@ import 'package:shtylishecommerce/fetures/product/model/Product.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/profilesetting.dart';
 
-import '../../fetures/checkout/checkout.dart';
+import '../../fetures/checkout/ui/checkout.dart';
 import '../../fetures/checkout/ui/CheckoutScreen.dart';
 import '../../fetures/home/ui/screen/category_products_screen.dart';
 import '../../fetures/home/ui/screen/HomeScreen.dart';
@@ -62,10 +61,11 @@ class AppRouter {
                   create: (context) => gitit<SearchCubit>(),
                   child: const SearchScreen(),
                 ));
+
       case Routes.checkoutScreen:
         return MaterialPageRoute(
-            builder: (_) => const Checkoutscreen(),
-                );
+          builder: (_) => const ConfirmOrderScreen(),
+        );
 
       default:
         return null;
