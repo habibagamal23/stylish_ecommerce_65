@@ -8,7 +8,6 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/cusombutton.dart';
 import '../../../../core/widgets/textfieldcutom.dart';
 import '../../../../generated/locale_keys.g.dart';
-import '../../../checkout/addadress/map.dart';
 import '../../../checkout/addadress/mapscreen.dart';
 import '../../model/user.dart';
 

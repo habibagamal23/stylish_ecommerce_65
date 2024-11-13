@@ -8,6 +8,7 @@ import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 
 import 'Myapp.dart';
 import 'core/sherdprf/sherd.dart';
+import 'fetures/checkout/checkout_cubit.dart';
 import 'fetures/home/logic/logic_home/home_cubit.dart';
 import 'generated/codegen_loader.g.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
@@ -18,11 +19,11 @@ void main() async {
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
-    // Force Hybrid Composition mode.
     mapsImplementation.useAndroidViewSurface = true;
   }
   await SharedPrefsHelper.init();
   await EasyLocalization.ensureInitialized();
+
   setypGitit();
   await checkislogin();
 
@@ -33,6 +34,11 @@ void main() async {
     assetLoader: CodegenLoader(),
     child: MultiBlocProvider(providers: [
       BlocProvider<LocalizatioCubit>(create: (_) => LocalizatioCubit()),
+      BlocProvider(
+        create: (context) =>gitit<CheckoutCubit>()..loadLoacation(),  // Provide CheckoutCubit here
+        child: MyApp(),
+      ),
+
     ], child: MyApp()),
   ));
 }

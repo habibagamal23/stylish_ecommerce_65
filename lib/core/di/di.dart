@@ -8,7 +8,7 @@ import 'package:shtylishecommerce/fetures/home/logic/logic_home/home_cubit.dart'
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 
 import '../../fetures/cart/cart_cubit.dart';
-import '../../fetures/checkout/logic/checkout_cubit.dart';
+import '../../fetures/checkout/checkout_cubit.dart';
 import '../../fetures/home/logic/logic_categories/CategoriesCubit.dart';
 import '../../fetures/profile-setting/logic/profile_cubit.dart';
 import '../../fetures/search/logic/search_cubit.dart';
@@ -41,7 +41,6 @@ void setypGitit() {
       () => ProfileService(gitit<Dio>()));
   gitit.registerLazySingleton<ProfileCubit>(
       () => ProfileCubit(gitit<ProfileService>()));
-
 
   gitit.registerFactory<CheckoutCubit>(
       () => CheckoutCubit(gitit<ProfileCubit>()));

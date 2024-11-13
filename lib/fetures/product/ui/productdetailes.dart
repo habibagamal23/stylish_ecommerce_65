@@ -13,7 +13,6 @@ import 'package:shtylishecommerce/fetures/product/ui/widgets/name_rating.dart';
 import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 import '../../../core/di/di.dart';
 import '../../../core/helpers/spacing.dart';
-import '../../checkout/addadress/add adress.dart';
 import '../../home/logic/logic_categories/CategoriesCubit.dart';
 import '../logic/product_cubit.dart';
 import '../model/Product.dart';

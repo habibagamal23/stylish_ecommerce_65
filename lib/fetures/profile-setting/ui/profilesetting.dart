@@ -5,7 +5,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/wigdets/profile_body.dart';
 import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 
-import '../../checkout/addadress/map.dart';
 import '../logic/profile_cubit.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -36,10 +35,12 @@ class ProfileScreen extends StatelessWidget {
           } else if (state is ProfileLoaded) {
             final profileCubit = context.read<ProfileCubit>();
 
-            return Column(
-              children: [
-                ProfileBody(user: state.user),
-              ],
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  ProfileBody(user: state.user),
+                ],
+              ),
             );
           } else if (state is ProfileError) {
             return Center(child: Text(state.message));

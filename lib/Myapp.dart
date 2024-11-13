@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocalizatioCubit, LocalizatioState>(
+    return
+      BlocBuilder<LocalizatioCubit, LocalizatioState>(
       builder: (context, state) {
         final local = state is LocalChange ? state.locale : Locale('en');
 
