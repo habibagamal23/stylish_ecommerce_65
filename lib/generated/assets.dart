@@ -3,10 +3,15 @@ class Assets {
   Assets._();
 
   static const String imagesAd1 = 'assets/images/ad1.jpg';
+  static const String imagesArrow = 'assets/images/arrow.svg';
+  static const String imagesBasketImage = 'assets/images/basket_image.png';
+  static const String imagesCard = 'assets/images/card.svg';
   static const String imagesElectronics = 'assets/images/electronics.jpg';
   static const String imagesJelwry = 'assets/images/jelwry.jpg';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesMasterCard = 'assets/images/master_card.svg';
   static const String imagesMens = 'assets/images/mens.jpg';
+  static const String imagesPaypal = 'assets/images/paypal.svg';
   static const String imagesWomen = 'assets/images/women.jpg';
   static const String translationsAr = 'assets/translations/ar.json';
   static const String translationsEn = 'assets/translations/en.json';

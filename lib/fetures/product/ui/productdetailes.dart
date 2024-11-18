@@ -6,6 +6,7 @@ import 'package:shtylishecommerce/core/helpers/colors.dart';
 import 'package:shtylishecommerce/core/helpers/extention.dart';
 import 'package:shtylishecommerce/core/routs/routs.dart';
 import 'package:shtylishecommerce/core/widgets/cusombutton.dart';
+import 'package:shtylishecommerce/fetures/cart/model/cartProduct.dart';
 import 'package:shtylishecommerce/fetures/product/ui/widgets/ProductImageViewer.dart';
 import 'package:shtylishecommerce/fetures/product/ui/widgets/ProductInfoSection.dart';
 import 'package:shtylishecommerce/fetures/product/ui/widgets/ReviewSection.dart';
@@ -13,6 +14,7 @@ import 'package:shtylishecommerce/fetures/product/ui/widgets/name_rating.dart';
 import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 import '../../../core/di/di.dart';
 import '../../../core/helpers/spacing.dart';
+import '../../checkout/logic/checkout_cubit.dart';
 import '../../home/logic/logic_categories/CategoriesCubit.dart';
 import '../logic/product_cubit.dart';
 import '../model/Product.dart';
@@ -83,6 +85,16 @@ class ProductDetailsScreen extends StatelessWidget {
               child: CustomButton(
                   text: LocaleKeys.homepage_buy_now.tr(),
                   onPressed: () {
+                    CartProduct cartp = CartProduct(
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        quantity: 1,
+                        total: (product.price * 1),
+                        discountPercentage: product.discountPercentage,
+                        discountedTotal:
+                        product.price - (product.price * (product.discountPercentage / 100)));
+                    context.read<CheckoutCubit>().addPruduct(cartp);
                     context.pushNamed(Routes.checkoutScreen);
                   }),
             ),

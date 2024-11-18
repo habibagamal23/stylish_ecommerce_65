@@ -1,7 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
+import 'package:shtylishecommerce/fetures/cart/model/cartProduct.dart';
+import 'package:shtylishecommerce/fetures/checkout/model/PaymentIntentInputModel.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
+
+import '../../../core/network/stripNetwork/StripApi.dart';
 
 part 'checkout_state.dart';
 
@@ -16,7 +20,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   loadLoacation() {
     if (profileCubit.state is ProfileLoaded) {
       final currentuser = profileCubit.currentUser;
-      addrss = currentuser!.address?.address ?? "Unknown";  // Optional chaining in case address is null
+      addrss = currentuser!.address?.address ?? "Unknown";
       addrescontroller.text = addrss;
       emit(AdressLoaded(addrss));
     } else {
@@ -24,10 +28,38 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     }
   }
 
-  setAdrees(String Adress){
-    addrss= Adress;
+  setAdrees(String Adress) {
+    addrss = Adress;
     addrescontroller.text = Adress;
     emit(AdressUpdated(Adress));
   }
 
+// just for test u sholud complete
+  List<CartProduct> cartsProduct = [];
+  void addPruduct(CartProduct product) {
+    CartProduct? existingProduct;
+    try {
+      existingProduct = cartsProduct.firstWhere((p) => p.id == product.id);
+    } catch (e) {
+      existingProduct = null;
+    }
+    if (existingProduct == null) {
+      cartsProduct.add(product);
+      emit(AddCarts(product));
+    }
+  }
+
+  // fuct stripe
+
+  StripApi stripApi = StripApi();
+  Future MakePymentStrip(PaymentIntentInputModel paymentinput) async {
+    emit(PaymentLoading());
+    try {
+      await stripApi.MakePayment(paymentinput);
+
+      emit(PaymentSuccess());
+    } catch (e) {
+      emit(PaymentFailure(e.toString()));
+    }
+  }
 }

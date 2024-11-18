@@ -9,8 +9,7 @@ import 'package:shtylishecommerce/fetures/product/model/Product.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/logic/profile_cubit.dart';
 import 'package:shtylishecommerce/fetures/profile-setting/ui/profilesetting.dart';
 
-import '../../fetures/checkout/ui/checkout.dart';
-import '../../fetures/checkout/ui/CheckoutScreen.dart';
+import '../../fetures/checkout/ui/checkoutScreen.dart';
 import '../../fetures/home/ui/screen/category_products_screen.dart';
 import '../../fetures/home/ui/screen/HomeScreen.dart';
 import '../../fetures/home/ui/screen/homebody.dart';

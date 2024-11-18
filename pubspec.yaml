@@ -49,6 +49,9 @@ dependencies:
   location: ^7.0.1
   geocoding: ^3.0.0
   google_maps_flutter_android: ^2.14.11
+  flutter_svg: ^2.0.14
+  font_awesome_flutter: ^10.8.0
+  flutter_stripe: ^11.2.0
 
 dev_dependencies:
   flutter_test:

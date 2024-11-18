@@ -31,6 +31,7 @@ class LoginCubit extends Cubit<LoginState> {
       );
 
       final LoginResponse? response = await _dioService.login(loginBody);
+      // custrom stripe stripservice creeat customer
       if (response != null) {
         await SharedPrefsHelper.setToken(response.accessToken);
         await SharedPrefsHelper.setid(response.id);
