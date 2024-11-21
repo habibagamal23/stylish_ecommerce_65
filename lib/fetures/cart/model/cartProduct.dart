@@ -2,8 +2,8 @@ class CartProduct {
   final int id;
   final String title;
   final double price;
-  final int quantity;
-  final double total;
+   int quantity;
+   double total;
   final double discountPercentage;
   final double discountedTotal;
   final String? thumbnail;
@@ -46,4 +46,28 @@ class CartProduct {
       'thumbnail': thumbnail,
     };
   }
+
+  /// Copy method to create a new `CartProduct` with updated fields.
+  CartProduct copyWith({
+    int? id,
+    String? title,
+    double? price,
+    int? quantity,
+    double? total,
+    double? discountPercentage,
+    double? discountedTotal,
+    String? thumbnail,
+  }) {
+    return CartProduct(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
+      total: total ?? this.total,
+      discountPercentage: discountPercentage ?? this.discountPercentage,
+      discountedTotal: discountedTotal ?? this.discountedTotal,
+      thumbnail: thumbnail ?? this.thumbnail,
+    );
+  }
+
 }

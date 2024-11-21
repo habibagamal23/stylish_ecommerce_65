@@ -3,6 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:shtylishecommerce/core/network/AuthService.dart';
 import 'package:shtylishecommerce/core/network/DioFactory.dart';
 import 'package:shtylishecommerce/core/network/HoemSevice.dart';
+import 'package:shtylishecommerce/core/network/cartService.dart';
+import 'package:shtylishecommerce/fetures/cart/cart_cubit.dart';
 import 'package:shtylishecommerce/fetures/home/logic/logic_home/home_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 
@@ -11,11 +13,12 @@ import '../../fetures/home/logic/logic_categories/CategoriesCubit.dart';
 import '../../fetures/profile-setting/logic/profile_cubit.dart';
 import '../../fetures/search/logic/search_cubit.dart';
 import '../network/profile_service.dart';
+import '../network/stripNetwork/StripApi.dart';
 
 final gitit = GetIt.instance;
 
 void setypGitit() {
-  gitit.registerLazySingleton<Dio>(() => DioFcatory.getDio());
+  gitit.registerFactory<Dio>(() => DioFcatory.getDio());
 
   ///  login
   gitit.registerLazySingleton<AuthService>(() => AuthService(gitit<Dio>()));
@@ -38,5 +41,14 @@ void setypGitit() {
       () => ProfileCubit(gitit<ProfileService>()));
 
   gitit.registerFactory<CheckoutCubit>(
-      () => CheckoutCubit(gitit<ProfileCubit>()));
+      () => CheckoutCubit(gitit<ProfileCubit>(), StripApi(Dio())));
+
+// payment
+//   gitit.registerLazySingleton<StripApi>(() => StripApi(gitit<Dio>()));
+
+// cart :
+
+  gitit.registerFactory<CartService>(() => CartService(gitit<Dio>()));
+
+  gitit.registerLazySingleton<CartCubit>(() => CartCubit(gitit<CartService>()));
 }

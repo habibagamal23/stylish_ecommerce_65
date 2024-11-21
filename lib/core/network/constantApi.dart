@@ -1,18 +1,18 @@
 class ApiConstants {
-  static const String apiBaseUrl = "https://dummyjson.com/";
+  static const String apiBaseUrl = "https://dummyjson.com";
 
-  static const String login = "auth/login";
+  static const String login = "$apiBaseUrl/auth/login";
 
-  static const String catigoryList = "products/category-list";
+  static const String catigoryList = "$apiBaseUrl/products/category-list";
 
-  static const String currentuser = "user/me";
-  static const String user = 'users';
-  static const String products  ="products";
-  static const String productsbycategory  ="products/category";
+  static const String currentuser = "$apiBaseUrl/user/me";
+  static const String user = '$apiBaseUrl users';
+  static const String products  ="$apiBaseUrl/products";
+  static const String productsbycategory  ="$apiBaseUrl/products/category";
 
-  static const String cart = "carts";
-  static const String userCart = "$cart/user";
-  static const String addCart = "$cart/add";
+  static const String cart = "$apiBaseUrl/carts";
+  static const String userCart = "$apiBaseUrl$cart/user";
+  static const String addCart = "$apiBaseUrl$cart/add";
 
 
 /// strip

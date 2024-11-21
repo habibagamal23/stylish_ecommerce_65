@@ -11,8 +11,9 @@ part 'checkout_state.dart';
 
 class CheckoutCubit extends Cubit<CheckoutState> {
   ProfileCubit profileCubit;
+  StripApi stripApi ;
 
-  CheckoutCubit(this.profileCubit) : super(CheckoutInitial());
+  CheckoutCubit(this.profileCubit , this.stripApi) : super(CheckoutInitial());
 
   TextEditingController addrescontroller = TextEditingController();
   String addrss = '';
@@ -51,7 +52,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
 
   // fuct stripe
 
-  StripApi stripApi = StripApi();
+
   Future MakePymentStrip(PaymentIntentInputModel paymentinput) async {
     emit(PaymentLoading());
     try {
@@ -62,4 +63,12 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       emit(PaymentFailure(e.toString()));
     }
   }
+
+
+  // total price :
+  double totalPrice = 0.0;
+  void setTotalPrice(double price) {
+    totalPrice = price;
+  }
+
 }

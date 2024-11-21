@@ -2,7 +2,7 @@ import 'cartProduct.dart';
 
 class Cart {
   final int id;
-  final List<CartProduct> products;
+   List<CartProduct> products;
   final double total;
   final double discountedTotal;
   final int userId;
@@ -21,17 +21,18 @@ class Cart {
 
   factory Cart.fromJson(Map<String, dynamic> json) {
     return Cart(
-      id: json['id'],
-      products: (json['products'] as List)
-          .map((productJson) => CartProduct.fromJson(productJson))
-          .toList(),
+      id: json['id'] ?? 0,
+      products: (json['products'] as List?)
+          ?.map((productJson) => CartProduct.fromJson(productJson))
+          .toList() ?? [],
       total: (json['total'] ?? 0.0).toDouble(),
       discountedTotal: (json['discountedTotal'] ?? 0.0).toDouble(),
-      userId: json['userId'],
-      totalProducts: json['totalProducts'],
-      totalQuantity: json['totalQuantity'],
+      userId: json['userId'] ?? 0,
+      totalProducts: json['totalProducts'] ?? 0,
+      totalQuantity: json['totalQuantity'] ?? 0,
     );
   }
+
 
   Map<String, dynamic> toJson() {
     return {

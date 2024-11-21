@@ -4,9 +4,7 @@ import 'constantApi.dart';
 
 class DioFcatory {
   static Dio getDio() {
-    Dio dio = Dio(BaseOptions(
-      baseUrl: ApiConstants.apiBaseUrl,
-    ));
+    Dio dio = Dio();
     dio.interceptors.add(PrettyDioLogger(
       responseBody: true,
       requestBody: true,

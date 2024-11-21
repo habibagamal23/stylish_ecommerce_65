@@ -10,12 +10,6 @@ class ReviewDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CheckoutCubit, CheckoutState>(
       builder: (context, state) {
-        final carts = context.read<CheckoutCubit>().cartsProduct;
-        if (carts.isEmpty) {
-          return const Center(
-            child: Text("No products added to the cart."),
-          );
-        }
         return Card(
           // u sholud improve this
           margin: EdgeInsets.all(8),
@@ -23,8 +17,7 @@ class ReviewDetails extends StatelessWidget {
           child: ListTile(
             title: const Text("Order Details"),
             subtitle:
-                Text("Name: ${carts.last.title} x ${carts.last.quantity}"),
-            trailing: Text("total : ${carts.last.total}"),
+                Text("Total: ${context.read<CheckoutCubit>().totalPrice}"),
           ),
         );
       },

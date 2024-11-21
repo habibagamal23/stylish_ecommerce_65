@@ -7,6 +7,7 @@ import 'package:shtylishecommerce/generated/locale_keys.g.dart';
 
 import '../../../../core/di/di.dart';
 import '../../../../core/helpers/spacing.dart';
+import '../../../cart/cart_cubit.dart';
 import '../../logic/logic_categories/CategoriesCubit.dart';
 import '../widgets/categorylist/category_list_bloc_builder.dart';
 import '../../logic/logic_home/home_cubit.dart';
@@ -91,7 +92,10 @@ class Homebody extends StatelessWidget {
           title: Text(
             LocaleKeys.homepage_cart.tr(),
           ),
-          onTap: () {},
+          onTap: () {
+            context.pushNamed(Routes.cartScreen);
+            context.read<CartCubit>().getCartItems();
+          },
         ),
         ListTile(
           leading: const Icon(Icons.favorite),

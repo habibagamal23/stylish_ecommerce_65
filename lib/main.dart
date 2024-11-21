@@ -5,6 +5,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:shtylishecommerce/LocalizationLogic/localizatio_cubit.dart';
 import 'package:shtylishecommerce/core/di/di.dart';
 import 'package:shtylishecommerce/core/network/AuthService.dart';
+import 'package:shtylishecommerce/fetures/cart/cart_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 
 import 'Myapp.dart';
@@ -18,7 +19,8 @@ import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platf
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // the puplish key refactor to add it in constant class
-  Stripe.publishableKey = "pk_test_51QLO18KCYYcZnriZlyXhnG9ZCL51lgQVnNkTiSDje6oveaCmfxdUNmevP06mmqzdevZTi2GKJBTvsWRcM12u9jOY0043YgS4XM";
+  Stripe.publishableKey =
+      "pk_test_51QLO18KCYYcZnriZlyXhnG9ZCL51lgQVnNkTiSDje6oveaCmfxdUNmevP06mmqzdevZTi2GKJBTvsWRcM12u9jOY0043YgS4XM";
 
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
@@ -39,10 +41,15 @@ void main() async {
     child: MultiBlocProvider(providers: [
       BlocProvider<LocalizatioCubit>(create: (_) => LocalizatioCubit()),
       BlocProvider(
-        create: (context) =>gitit<CheckoutCubit>()..loadLoacation(),  // Provide CheckoutCubit here
+        create: (context) => gitit<CheckoutCubit>()..loadLoacation(),
+        // Provide CheckoutCubit here
         child: MyApp(),
       ),
-
+      BlocProvider(
+        create: (context) => gitit<CartCubit>(),
+        // Provide CheckoutCubit here
+        child: MyApp(),
+      ),
     ], child: MyApp()),
   ));
 }

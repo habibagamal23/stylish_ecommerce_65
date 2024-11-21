@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shtylishecommerce/core/di/di.dart';
 import 'package:shtylishecommerce/core/routs/routs.dart';
+import 'package:shtylishecommerce/fetures/cart/cartscreen.dart';
 import 'package:shtylishecommerce/fetures/home/logic/logic_home/home_cubit.dart';
 import 'package:shtylishecommerce/fetures/login/logic/login_cubit.dart';
 import 'package:shtylishecommerce/fetures/home/logic/logic_categories/CategoriesCubit.dart';
@@ -64,6 +65,10 @@ class AppRouter {
       case Routes.checkoutScreen:
         return MaterialPageRoute(
           builder: (_) => const ConfirmOrderScreen(),
+        );
+      case Routes.cartScreen:
+        return MaterialPageRoute(
+          builder: (_) =>  CartScreen(),
         );
 
       default:

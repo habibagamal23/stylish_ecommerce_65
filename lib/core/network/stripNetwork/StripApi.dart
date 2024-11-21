@@ -1,16 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shtylishecommerce/core/network/constantApi.dart';
-
 import '../../../fetures/checkout/model/EphemeralKeyModel.dart';
 import '../../../fetures/checkout/model/PaymentIntentInputModel.dart';
 import '../../../fetures/checkout/model/PaymentIntentModel.dart';
 
 class StripApi {
-   Dio _dio =  Dio()
-    ..interceptors.add(PrettyDioLogger(
-        requestBody: true, request: true, error: true, responseBody: true));
+  StripApi(this._dio);
+   Dio _dio ;
 // 1 creat pyment intit
   Future<PaymentIntentModel> CreatPymentIntit(
       PaymentIntentInputModel paymentinput) async {
